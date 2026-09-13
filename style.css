@@ -305,10 +305,7 @@ em { font-style: normal; }
 .nav-link.active { color: var(--text-hi); font-weight: 600; }
 
 .nav-actions { display: flex; align-items: center; gap: 8px; }
-@media (max-width:1100px) {
-  /* .nav-actions { display: none; } */
 
-}
 .nav-cta { padding: 10px 20px; font-size: 13px; }
 
 .menu-btn {
@@ -391,13 +388,16 @@ em { font-style: normal; }
 .mobile-socials { display: flex; gap: 16px; flex-wrap: wrap; }
 .mobile-socials a { font-family: var(--font-mono); font-size: 12px; }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .nav-desktop { display: none; }
   .menu-btn { display: flex; }
   .nav-cta { display: none; }
   .nav-inner { padding: 8px 8px 8px 16px; }
 }
 
+@media (max-width: 1100px) {
+  /* .menu-btn { display: flex; } */
+}
 /* ════════════════════════════════════════════════════
    HERO — photo portrait + typing effect
    ════════════════════════════════════════════════════ */
