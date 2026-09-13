@@ -9,7 +9,7 @@
   const hasHover = window.matchMedia('(hover: hover)').matches;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasGSAP = !!(window.gsap && window.ScrollTrigger);
-  const isDesktop = window.innerWidth >= 900;
+  let isDesktop = window.innerWidth >= 900;
 
   if (hasGSAP) {
     gsap.registerPlugin(ScrollTrigger);
@@ -395,6 +395,7 @@
     window.addEventListener('resize', () => {
       clearTimeout(projResizeTimer);
       projResizeTimer = setTimeout(() => {
+        isDesktop = window.innerWidth >= 900;
         if (!track.classList.contains('is-static')) setupHorizontalScroll();
       }, 250);
     });
@@ -628,29 +629,175 @@
   })();
 
   /* ─────────────────────────────────────────────────
-     Mega wordmark — outline-to-solid scroll scrub
+     Section pixel-icon — animated constellation mark
+     Shown above a section title. Pauses off-screen and
+     respects prefers-reduced-motion.
      ───────────────────────────────────────────────── */
-  if (hasGSAP && !reduceMotion) {
-    gsap.utils.toArray('.mega-wordmark').forEach((el) => {
-      const solid = el.querySelector('.mega-solid');
-      if (!solid) return;
-      const isSecond = el.classList.contains('mega-wordmark-2');
-      gsap.fromTo(
-        solid,
-        { clipPath: isSecond ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)' },
-        {
-          clipPath: isSecond ? 'inset(0 0 0 0%)' : 'inset(0 0% 0 0)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: '.mega-close',
-            start: 'top 85%',
-            end: 'bottom 45%',
-            scrub: true
-          }
+ 
+
+    (() => {
+      // ════════════════════════════════════════════════════════
+      //  Pixel Hex Star — 6-fold + Gaussian Flow Blink
+      // ════════════════════════════════════════════════════════
+
+      const canvases = document.querySelectorAll('.pixel-icon');
+      if (!canvases.length) return;
+
+      // ── ثوابت ──────────────────────────────────────────────
+      const SIZE = 80;
+      const CX   = 40;
+      const CY   = 40;
+      const RGB  = '20, 24, 26';
+      const N    = 6;
+      const RADIUS = 24;
+
+      const ROT_SPEED  = 1.4;
+      const WAVE_SPEED = 2.7;            // سرعة تدفق القمة على الخط
+
+      // عرض القمة Gaussian: كل ما الرقم أعلى، كل ما القمة أحد
+      const PEAK_SHARPNESS = 2.5;
+      const BASE_OPACITY   = 0.15;       // opacity دائم للنقاط (مفيش لحظة سوداء)
+      const PEAK_OPACITY   = 0.80;       // قمة القمة
+
+      const DOT_DISTANCES = [6, 12, 18];
+      const DOT_SIZE      = 2;
+
+      // ── إعدادات الإظهار الواضح (دايماً مرئية زي الأصل) ────
+      const CENTER_BLINK_SPEED = 2.2;    // سرعة نبض المنتصف
+      const VERTEX_CHASE_SPEED = 1.6;    // سرعة chase للـ 6 رؤوس
+      const MIN_LIT = 0.45;              // أقل قيمة (دايماً مرئية، مش بتختفي تماماً)
+      const MAX_LIT = 1.0;               // أعلى قيمة (full bright)
+
+      // ── 6 رؤوس pointy-top ─────────────────────────────────
+      const baseVertices = Array.from({ length: N }, (_, i) => {
+        const angle = (i * 2 * Math.PI) / N - Math.PI / 2;
+        return { angle, s: 5, a: 0.85 };
+      });
+
+      const rgba = (a) => `rgba(${RGB}, ${a.toFixed(3)})`;
+      const half = Math.floor(DOT_SIZE / 2);
+
+      const reduceMotion =
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      canvases.forEach((canvas) => {
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        ctx.imageSmoothingEnabled = false;
+
+        // ── النسخة الثابتة (مرئية بالكامل زي الأصل) ─────────
+        const drawStatic = () => {
+          ctx.clearRect(0, 0, SIZE, SIZE);
+
+          ctx.fillStyle = rgba(0.95);
+          ctx.fillRect(CX - 3, CY - 3, 6, 6);
+
+          baseVertices.forEach((v) => {
+            const x = CX + Math.cos(v.angle) * RADIUS;
+            const y = CY + Math.sin(v.angle) * RADIUS;
+
+            ctx.fillStyle = rgba(0.45);
+            DOT_DISTANCES.forEach((d) => {
+              const dx = CX + Math.cos(v.angle) * d;
+              const dy = CY + Math.sin(v.angle) * d;
+              ctx.fillRect(
+                Math.round(dx) - half,
+                Math.round(dy) - half,
+                DOT_SIZE,
+                DOT_SIZE
+              );
+            });
+
+            ctx.fillStyle = rgba(v.a);
+            const vh = Math.floor(v.s / 2);
+            ctx.fillRect(Math.round(x) - vh, Math.round(y) - vh, v.s, v.s);
+          });
+        };
+
+        if (reduceMotion) { drawStatic(); return; }
+
+        // ── النسخة المتحركة ─────────────────────────────────
+        let rafId = null;
+
+        const draw = (time) => {
+          ctx.clearRect(0, 0, SIZE, SIZE);
+          const t = time * 0.001;
+          const rotation = t * ROT_SPEED;
+
+          // ════════════════════════════════════════════════════
+          // 1) نقطة المنتصف — واضحة ومرئية دايماً مع نبضة قوية
+          // ════════════════════════════════════════════════════
+          const cWave = (Math.sin(t * CENTER_BLINK_SPEED) + 1) / 2;   // 0 → 1
+          const cLit  = MIN_LIT + cWave * (MAX_LIT - MIN_LIT);        // 0.35 → 1.0
+          const cSize = 5 + Math.round(cWave * 2);                     // 5 → 7
+          const ch    = Math.floor(cSize / 2);
+          ctx.fillStyle = rgba(cLit);
+          ctx.fillRect(CX - ch, CY - ch, cSize, cSize);
+
+          // ════════════════════════════════════════════════════
+          // 2) الخطوط Gaussian + الرؤوس الستة (chase واضح)
+          // ════════════════════════════════════════════════════
+          baseVertices.forEach((v, i) => {
+            const a = v.angle + rotation;
+            const x = CX + Math.cos(a) * RADIUS;
+            const y = CY + Math.sin(a) * RADIUS;
+
+            // ── Gaussian Flow ─────────────────────────────
+            // قمة بتجري على الخط من المركز (0) للرأس (3)
+            const peakPos = (t * WAVE_SPEED + i * 0.3) % 3;
+
+            DOT_DISTANCES.forEach((d, dotIdx) => {
+              // مسافة القمة من النقطة دي (مع wrap للقمة)
+              let dist = Math.abs(peakPos - dotIdx);
+              if (dist > 1.5) dist = 3 - dist;
+
+              // Gaussian ناعم: قمة حادة بس smooth falloff
+              const peak = Math.exp(-dist * dist * PEAK_SHARPNESS);
+
+              // base + peak: النقطة دايماً مرئية + قمة فوقها
+              const opacity = BASE_OPACITY + peak * PEAK_OPACITY;
+
+              const dx = CX + Math.cos(a) * d;
+              const dy = CY + Math.sin(a) * d;
+
+              ctx.fillStyle = rgba(opacity);
+              ctx.fillRect(
+                Math.round(dx) - half,
+                Math.round(dy) - half,
+                DOT_SIZE,
+                DOT_SIZE
+              );
+            });
+
+            // ── الرأس — واضح ومرئي دايماً مع chase قوي ───
+            // كل رأس متأخر بـ 60° = موجة تدور حوالين السداسي
+            const vPhase = t * VERTEX_CHASE_SPEED - i * (2 * Math.PI / N);
+            const vWave  = (Math.sin(vPhase) + 1) / 2;
+            const vLit   = MIN_LIT + vWave * (MAX_LIT - MIN_LIT);        // 0.35 → 1.0
+            const vSize  = 4 + Math.round(vWave * 2);                     // 4 → 6
+            const vh     = Math.floor(vSize / 2);
+            ctx.fillStyle = rgba(vLit);
+            ctx.fillRect(Math.round(x) - vh, Math.round(y) - vh, vSize, vSize);
+          });
+
+          rafId = requestAnimationFrame(draw);
+        };
+
+        // ── تشغيل/إيقاف حسب الظهور ────────────────────────
+        const start = () => { if (rafId === null) rafId = requestAnimationFrame(draw); };
+        const stop  = () => { if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; } };
+
+        if ('IntersectionObserver' in window) {
+          const io = new IntersectionObserver(
+            (entries) => entries.forEach((e) => (e.isIntersecting ? start() : stop())),
+            { threshold: 0.1 }
+          );
+          io.observe(canvas);
+        } else {
+          start();
         }
-      );
-    });
-  }
+      });
+    })();
 
   /* ─────────────────────────────────────────────────
      Refresh ScrollTrigger once everything has settled
