@@ -479,7 +479,7 @@
   (() => {
     const el = document.getElementById('typing-text');
     if (!el) return;
-    const phrases = ['scalable web apps.', 'clean Laravel APIs.', 'modern React interfaces.', 'full-stack platforms.'];
+    const phrases = ['scalable web apps.', 'clean Laravel APIs.', 'modern interfaces.', 'full-stack platforms.'];
 
     if (reduceMotion) {
       el.textContent = phrases[0];
@@ -563,14 +563,22 @@
   if (hasGSAP && !reduceMotion && isDesktop) {
     const stackCards = gsap.utils.toArray('.services-list .service-feature');
     if (stackCards.length > 1) {
-      const lastCard = stackCards[stackCards.length - 1];
       stackCards.forEach((card, i) => {
         const isLast = i === stackCards.length - 1;
+        // Explicit stacking order — guarantees each card renders above the
+        // ones before it even when ScrollTrigger wraps pinned cards in its
+        // own spacer elements (which breaks CSS :nth-child z-index rules).
+        gsap.set(card, { zIndex: i + 1 });
         if (!isLast) {
           ScrollTrigger.create({
             trigger: card,
             start: 'top 96px',
-            endTrigger: lastCard,
+            // Hand off the pin to the NEXT card, not the last one — each
+            // card should only stay pinned until it's covered by the card
+            // right after it. Pinning until the final card caused every
+            // earlier card to stay stacked (and visible/ghosting through
+            // the faded 0.65-opacity cards) for the rest of the section.
+            endTrigger: stackCards[i + 1],
             end: 'top 96px',
             pin: true,
             pinSpacing: false
@@ -601,17 +609,7 @@
     const steps = Array.from(document.querySelectorAll('.workflow-step'));
     const frames = Array.from(document.querySelectorAll('.process-code-frame'));
     const dots = Array.from(document.querySelectorAll('.process-dots i'));
-    const filenameEl = document.getElementById('process-filename');
     if (!steps.length) return;
-
-    const filenames = [
-      'DISCOVERY/BRIEF.MD',
-      'PLANNING/ROADMAP.MD',
-      'DESIGN/SYSTEM.MD',
-      'SPRINTS/SPRINT-01.MD',
-      'QA/REPORT.MD',
-      'LAUNCH/CHECKLIST.MD'
-    ];
 
     const setActiveStep = (i) => {
       steps.forEach((s, idx) => {
@@ -620,7 +618,6 @@
       });
       frames.forEach((f, idx) => f.classList.toggle('is-active', idx === i));
       dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
-      if (filenameEl && filenames[i]) filenameEl.textContent = filenames[i];
     };
 
     steps.forEach((step, i) => {

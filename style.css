@@ -305,6 +305,10 @@ em { font-style: normal; }
 .nav-link.active { color: var(--text-hi); font-weight: 600; }
 
 .nav-actions { display: flex; align-items: center; gap: 8px; }
+@media (max-width:1100px) {
+  .nav-actions { display: none; }
+
+}
 .nav-cta { padding: 10px 20px; font-size: 13px; }
 
 .menu-btn {
@@ -1530,17 +1534,38 @@ em { font-style: normal; }
   position: sticky;
   top: 120px;
 }
+
+/* ── Terminal-style process panel ── */
+.process-code-panel {
+  width: 100%;
+  padding: 22px;
+  border-radius: var(--radius-xl);
+}
+@media (min-width: 761px) {
+  .process-code-panel { max-width: 560px; }
+}
 .process-code-panel .code-panel-head {
   position: relative;
   gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
-.process-code-panel .code-panel-head > span:not(.process-filename):not(.process-dots) {
-  display: none;
+/* Neutralize the base macOS-dot span styling (nth-child colors) now that
+   the label + dots are the only two spans in this header. */
+.process-code-panel .code-panel-head > span {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
 }
 .process-filename {
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-faint);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
   margin-left: 0;
 }
 .process-dots {
@@ -1549,22 +1574,26 @@ em { font-style: normal; }
   gap: 6px;
 }
 .process-dots i {
-  width: 6px; height: 6px;
+  width: 7px; height: 7px;
   border-radius: 50%;
-  background: var(--border-2);
-  transition: background var(--dur-fast) var(--ease);
+  background: var(--border-3);
 }
-.process-dots i.is-active { background: var(--accent); }
 
-.process-code-body { position: relative; min-height: 340px; }
+.process-code-body { position: relative; min-height: 300px; }
 .process-code-frame {
   position: absolute;
   inset: 0;
-  padding: 36px;
+  padding: 28px 32px;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
   pointer-events: none;
+  background: var(--bg-tint);
+  border: 1px solid var(--border-1);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 2;
 }
 .process-code-frame.is-active {
   opacity: 1;
@@ -1572,15 +1601,42 @@ em { font-style: normal; }
   pointer-events: auto;
   position: relative;
 }
-.process-code-frame .var { color: #0891b2; font-size: 13px; }
-.process-code-frame .prop { color: var(--text-hi); font-size: 13px; }
-.process-code-frame .arr { color: #b45309; font-size: 13px; }
+
+/* Terminal line types */
+.pt-cmt { color: var(--text-faint); }
+.pt-prompt { color: var(--accent); font-weight: 600; margin-right: 8px; }
+.pt-cmd { color: var(--text-hi); font-weight: 600; }
+.pt-gap { height: 12px; }
+.pt-out { color: var(--text-mid); }
+.pt-cursor {
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--text-hi);
+  vertical-align: middle;
+  animation: blink 1s steps(2) infinite;
+}
+.pt-ok { color: var(--accent); font-weight: 500; }
+.pt-pending { color: #b45309; font-weight: 500; }
+.pt-link { color: #2563eb; }
+.pt-url { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 480px) {
+  .process-code-frame { padding: 22px; font-size: 12px; }
+}
 
 @media (max-width: 760px) {
 .process-panel {
-    margin-left: 20%;
-}}
+ margin-left: auto;
+        margin-right: auto;}
+      }
 
+      @media (max-width: 900px) {
+.process-panel {
+ margin-left: auto;
+        margin-right: auto;}
+      }
 /* Footer strip below the workflow */
 .workflow-footer {
   display: flex;
@@ -2061,7 +2117,9 @@ em { font-style: normal; }
 .exp-company { font-size: 14.5px; color: var(--text-mid); }
 .exp-desc { font-size: 14px; color: var(--text-mid); line-height: 1.55; }
 @media (max-width: 1024px) {
-  .exp-row { grid-template-columns: 150px 1fr; row-gap: 8px; }
+  .exp-row { grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 24px 0; row-gap: 8px; }
   .exp-date { grid-column: 1 / -1; order: -1; }
 }
 @media (max-width: 640px) {
@@ -2369,12 +2427,12 @@ em { font-style: normal; }
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 0fr;
   gap: 48px;
   margin-bottom: 64px;
 }
 @media (max-width: 768px) {
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-grid { grid-template-columns: 3fr 1fr; gap: 32px; }
   .footer-brand { grid-column: 1 / -1; }
 }
 .footer-brand { max-width: 360px; }
@@ -2575,3 +2633,41 @@ em { font-style: normal; }
   margin-bottom: 32px;
 }
 
+    .marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.marquee-inner {
+  display: flex;
+  align-items: center;
+  gap: 55px;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-inner img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  opacity: 0.75;
+  filter: grayscale(100%);
+  transition: 0.3s ease;
+}
+
+.marquee-inner img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}

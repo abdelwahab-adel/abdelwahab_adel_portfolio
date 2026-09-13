@@ -4,7 +4,7 @@ A complete redesign of the personal portfolio into a premium, light, editorial s
 
 ## What you get
 
-- **3 files** — no build step, no framework, just open `index.html`
+- **No build step, no framework** — just open `index.html`
 - **Fully responsive** — desktop, tablet, and mobile
 - **SEO-ready** — meta tags, Open Graph, Twitter cards, JSON-LD structured data
 - **Accessible** — skip link, semantic HTML, ARIA labels, keyboard support
@@ -15,11 +15,15 @@ A complete redesign of the personal portfolio into a premium, light, editorial s
 
 ```
 portfolio/
-├── index.html      ← the entire site
-├── style.css       ← all styles (CSS variables, dark theme, responsive)
-├── script.js       ← animations, mobile menu, counters, cursor
-├── README.md       ← this file
-└── assets/         ← empty (project images load from your Vercel site)
+├── index.html          ← homepage
+├── projects.html       ← full project list
+├── style.css           ← all styles (CSS variables, light theme, responsive)
+├── script.js           ← animations, mobile menu, counters, cursor
+├── README.md           ← this file
+└── assets/
+    ├── favicon.svg
+    ├── images/          ← profile photos + compressed WebP project screenshots
+    └── vendor/          ← self-hosted gsap.min.js + ScrollTrigger.min.js
 ```
 
 ## Quick start
@@ -125,8 +129,9 @@ Reduced-motion users get instant renders (no animations).
 
 ## Performance
 
-- 0 JS dependencies (no React, no jQuery, no GSAP)
+- Only dependency is GSAP + ScrollTrigger (~117KB, self-hosted in `assets/vendor/`) for scroll animations — no React, no jQuery, no build step
 - Single CSS file, no preprocessor needed
 - All fonts preconnected, swapped asynchronously
+- Project screenshots are compressed WebP (resized to their actual display size — ~19MB of PNGs reduced to under 1MB total)
 - Project images use `loading="lazy"` with a CSS fallback when blocked
 - Lighthouse-friendly: semantic landmarks, alt text, proper heading order, focus styles, color contrast
