@@ -155,10 +155,10 @@
         opacity: 1,
         y: 0,
         rotateZ: 0,
-        duration: 1,
+        duration: 0.7,
         ease: 'back.out(1.6)',
-        stagger: 0.018,
-        delay: 0.15
+        stagger: 0.012,
+        delay: 0.05
       });
     } else {
       heroTitle.style.opacity = '1';
@@ -181,9 +181,9 @@
         onEnter: () => {
           gsap.to(words, {
             yPercent: 0,
-            duration: 0.9,
+            duration: 0.6,
             ease: 'power4.out',
-            stagger: 0.035
+            stagger: 0.025
           });
         }
       });
@@ -206,18 +206,16 @@
     if (reduceMotion) {
       gsap.set(revealEls, { opacity: 1, y: 0 });
     } else {
-      gsap.set(revealEls, { opacity: 0, y: 32, scale: 0.97, filter: 'blur(6px)' });
+      gsap.set(revealEls, { opacity: 0, y: 16 });
       ScrollTrigger.batch(revealEls, {
         start: 'top 88%',
         onEnter: (batch) => {
           gsap.to(batch, {
             opacity: 1,
             y: 0,
-            scale: 1,
-            filter: 'blur(0px)',
-            duration: 1,
+            duration: 0.55,
             ease: 'power3.out',
-            stagger: 0.09,
+            stagger: 0.05,
             overwrite: true
           });
         },
@@ -245,7 +243,7 @@
   const counters = document.querySelectorAll('[data-count]');
   const animateCount = (el) => {
     const target = parseInt(el.dataset.count, 10);
-    const duration = 1600;
+    const duration = 900;
     const start = performance.now();
     const tick = (now) => {
       const t = Math.min(1, (now - start) / duration);
@@ -421,6 +419,143 @@
   }
 
   /* ─────────────────────────────────────────────────
+     Project details modal — one shared dialog, built
+     once and re-populated from whichever .project-card
+     the visitor opens. Links inside the card (Live Demo /
+     GitHub) still work normally and don't open the modal.
+     ───────────────────────────────────────────────── */
+  (() => {
+    const cards = Array.from(document.querySelectorAll('.project-card'));
+    if (!cards.length) return;
+
+    const EXTERNAL_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>';
+    const GITHUB_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'pm-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML =
+      '<div class="pm-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title">' +
+        '<div class="pm-media">' +
+          '<img id="pm-image" src="" alt="">' +
+          '<button type="button" class="pm-close" aria-label="Close project details">' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="pm-body">' +
+          '<div class="pm-badges">' +
+            '<span class="pm-badge pm-badge-dark" id="pm-type"></span>' +
+            '<span class="pm-badge pm-badge-success"><span class="pm-dot" aria-hidden="true"></span><span id="pm-status"></span></span>' +
+          '</div>' +
+          '<h3 id="pm-title" class="pm-title"></h3>' +
+          '<p id="pm-desc" class="pm-desc"></p>' +
+          '<div class="pm-actions" id="pm-actions"></div>' +
+          '<div class="pm-tech" id="pm-tech"></div>' +
+          '<div class="pm-divider" aria-hidden="true"></div>' +
+          '<span class="pm-section-label">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>' +
+            'About the project' +
+          '</span>' +
+          '<div id="pm-about-text" class="pm-about-text"></div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    const closeBtn  = overlay.querySelector('.pm-close');
+    const pmImage   = overlay.querySelector('#pm-image');
+    const pmType    = overlay.querySelector('#pm-type');
+    const pmStatus  = overlay.querySelector('#pm-status');
+    const pmTitle   = overlay.querySelector('#pm-title');
+    const pmDesc    = overlay.querySelector('#pm-desc');
+    const pmActions = overlay.querySelector('#pm-actions');
+    const pmTech    = overlay.querySelector('#pm-tech');
+    const pmAbout   = overlay.querySelector('#pm-about-text');
+
+    let lastFocused = null;
+
+    function openModal(card) {
+      lastFocused = document.activeElement;
+
+      const img = card.querySelector('.project-device img');
+      pmImage.src = img ? img.getAttribute('src') : '';
+      pmImage.alt = img ? img.getAttribute('alt') : '';
+
+      const tagPill = card.querySelector('.project-tag-pill');
+      pmType.textContent = card.dataset.type || (tagPill ? tagPill.textContent.trim() : 'Project');
+      pmStatus.textContent = card.dataset.status || 'Completed';
+
+      pmTitle.textContent = card.querySelector('h3') ? card.querySelector('h3').textContent.trim() : '';
+      const descEl = card.querySelector('.project-card-content > p');
+      pmDesc.textContent = descEl ? descEl.textContent.trim() : '';
+
+      pmActions.innerHTML = '';
+      Array.from(card.querySelectorAll('.project-links a')).forEach((link, i) => {
+        const label = link.textContent.trim();
+        const isGithub = /github\.com/.test(link.href) && /profile/i.test(label);
+        const a = document.createElement('a');
+        a.href = link.href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'pm-btn ' + (i === 0 ? 'pm-btn-primary' : 'pm-btn-ghost');
+        a.innerHTML = (isGithub ? GITHUB_ICON : EXTERNAL_ICON) + '<span>' + (isGithub ? 'View Code' : label) + '</span>';
+        pmActions.appendChild(a);
+      });
+
+      pmTech.innerHTML = '';
+      card.querySelectorAll('.project-stack span').forEach((s) => {
+        const span = document.createElement('span');
+        span.textContent = s.textContent;
+        pmTech.appendChild(span);
+      });
+
+      pmAbout.innerHTML = '';
+      (card.dataset.about || '').split(/\n\s*\n/).forEach((para) => {
+        if (!para.trim()) return;
+        const p = document.createElement('p');
+        p.textContent = para.trim();
+        pmAbout.appendChild(p);
+      });
+
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('pm-open');
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('pm-open');
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+
+    cards.forEach((card) => {
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
+      card.setAttribute('aria-haspopup', 'dialog');
+
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.project-links')) return; // let the card's own links work normally
+        openModal(card);
+      });
+      card.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('.project-links')) {
+          e.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+  })();
+
+  /* ─────────────────────────────────────────────────
      Magnetic buttons & chips
      ───────────────────────────────────────────────── */
   if (hasHover) {
@@ -489,9 +624,9 @@
     let phraseIndex = 0;
     let charIndex = 0;
     let deleting = false;
-    const typeSpeed = 55;
-    const deleteSpeed = 28;
-    const holdTime = 1800;
+    const typeSpeed = 32;
+    const deleteSpeed = 16;
+    const holdTime = 1200;
 
     const tick = () => {
       const current = phrases[phraseIndex];
@@ -795,6 +930,108 @@
         }
       });
     })();
+
+  /* ─────────────────────────────────────────────────
+     Contact form — client-side validation + WhatsApp handoff.
+     This is a static site with no backend, so a real submit
+     isn't possible; instead we validate in the browser then
+     open WhatsApp in a new tab with everything pre-filled.
+     (Swap this for Formspree/EmailJS/etc. if you add a backend.)
+     ───────────────────────────────────────────────── */
+  (() => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const WHATSAPP_NUMBER = '201100340198'; // international format, no leading +
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const fields = {
+      name:    { input: document.getElementById('name'),    error: document.getElementById('err-name') },
+      email:   { input: document.getElementById('email'),   error: document.getElementById('err-email') },
+      subject: { input: document.getElementById('subject'), error: document.getElementById('err-subject') },
+      message: { input: document.getElementById('message'), error: document.getElementById('err-message') },
+    };
+    const submitBtn  = document.getElementById('submit-btn');
+    const submitText = document.getElementById('submit-text');
+    const feedback   = document.getElementById('form-feedback');
+
+    function setError(key, message) {
+      const { input, error } = fields[key];
+      input.closest('.field').classList.toggle('invalid', !!message);
+      input.setAttribute('aria-invalid', message ? 'true' : 'false');
+      error.textContent = message || '';
+    }
+
+    function validate() {
+      let valid = true;
+
+      if (fields.name.input.value.trim().length < 2) {
+        setError('name', 'Please enter your name.');
+        valid = false;
+      } else setError('name', '');
+
+      if (!EMAIL_RE.test(fields.email.input.value.trim())) {
+        setError('email', 'Please enter a valid email address.');
+        valid = false;
+      } else setError('email', '');
+
+      if (fields.subject.input.value.trim().length < 3) {
+        setError('subject', 'Please add a short subject.');
+        valid = false;
+      } else setError('subject', '');
+
+      if (fields.message.input.value.trim().length < 10) {
+        setError('message', 'Please add a few more details (10+ characters).');
+        valid = false;
+      } else setError('message', '');
+
+      return valid;
+    }
+
+    // Re-validate a field live once it has already been flagged invalid
+    Object.keys(fields).forEach((key) => {
+      fields[key].input.addEventListener('input', () => {
+        if (fields[key].input.closest('.field').classList.contains('invalid')) validate();
+      });
+    });
+
+    function showFeedback(type, message) {
+      feedback.hidden = false;
+      feedback.textContent = message;
+      feedback.className = 'form-feedback ' + type;
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      feedback.hidden = true;
+
+      if (!validate()) {
+        showFeedback('error', 'Please fix the highlighted fields and try again.');
+        return;
+      }
+
+      const name    = fields.name.input.value.trim();
+      const email   = fields.email.input.value.trim();
+      const subject = fields.subject.input.value.trim();
+      const message = fields.message.input.value.trim();
+
+      submitBtn.disabled = true;
+      submitText.textContent = 'Opening WhatsApp…';
+
+      const waText = `*${subject}*\nName: ${name}\nEmail: ${email}\n\n${message}`;
+      const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
+
+      window.open(waLink, '_blank', 'noopener');
+
+      showFeedback('success', `WhatsApp should be opening now in a new tab — if it didn't, message us directly at wa.me/${WHATSAPP_NUMBER}.`);
+      form.reset();
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitText.textContent = 'Send via WhatsApp';
+      }, 2500);
+    });
+  })();
 
   /* ─────────────────────────────────────────────────
      Refresh ScrollTrigger once everything has settled

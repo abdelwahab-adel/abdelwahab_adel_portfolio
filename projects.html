@@ -55,26 +55,25 @@
 
   <main id="main">
 
-    <!-- ════════════════ NAVBAR ════════════════ -->
+      <!-- ════════════════ NAVBAR ════════════════ -->
     <header class="nav" id="nav">
       <div class="nav-inner">
-        <a href="index.html#home" class="logo" aria-label="Abdelwahab Adel — home">
-          <span class="logo-mark">A</span>
+        <a href="#home" class="logo" aria-label="Abdelwahab Adel — home">
           <span class="logo-text">ABDELWAHAB<em>·</em>ADEL</span>
         </a>
 
         <nav class="nav-desktop" aria-label="Primary">
-          <a href="index.html#home" class="nav-link">Home</a>
-          <a href="index.html#about" class="nav-link">About</a>
-          <a href="index.html#skills" class="nav-link">Skills</a>
-          <a href="index.html#solutions" class="nav-link">Solutions</a>
-          <a href="index.html#services" class="nav-link">Services</a>
-          <a href="projects.html" class="nav-link active">Projects</a>
-          <a href="index.html#experience" class="nav-link">Experience</a>
-          <a href="index.html#contact" class="nav-link">Contact</a>
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#solutions" class="nav-link">Solutions</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="#experience" class="nav-link">Experience</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
-        <div class="nav-actions">
+          <div class="nav-actions">
           <a href="index.html#contact" class="btn btn-primary nav-cta">
             <span>Let's Talk</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -87,17 +86,17 @@
     </header>
 
     <!-- Mobile Nav -->
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <nav class="mobile-nav " id="mobile-nav" aria-label="Mobile navigation">
       <div class="mobile-nav-inner">
         <div class="mobile-nav-links">
-          <a href="index.html#home" class="mobile-link" data-num="00">Home</a>
-          <a href="index.html#about" class="mobile-link" data-num="01">About</a>
-          <a href="index.html#skills" class="mobile-link" data-num="02">Skills</a>
-          <a href="index.html#solutions" class="mobile-link" data-num="03">Solutions</a>
-          <a href="index.html#services" class="mobile-link" data-num="04">Services</a>
+          <a href="#home" class="mobile-link" data-num="00">Home</a>
+          <a href="#about" class="mobile-link" data-num="01">About</a>
+          <a href="#skills" class="mobile-link" data-num="02">Skills</a>
+          <a href="#solutions" class="mobile-link" data-num="03">Solutions</a>
+          <a href="#services" class="mobile-link" data-num="04">Services</a>
           <a href="projects.html" class="mobile-link" data-num="05">Projects</a>
-          <a href="index.html#experience" class="mobile-link" data-num="06">Experience</a>
-          <a href="index.html#contact" class="mobile-link" data-num="07">Contact</a>
+          <a href="#experience" class="mobile-link" data-num="06">Experience</a>
+          <a href="#contact" class="mobile-link" data-num="07">Contact</a>
         </div>
         <div class="mobile-nav-footer">
           <a href="mailto:abdelwahabadel777@gmail.com">abdelwahabadel777@gmail.com</a>
@@ -180,12 +179,17 @@
 
         <div class="projects-full-grid" id="projects-full-grid" data-stagger>
 
-          <article class="project-card" data-category="laravel">
+          <article class="project-card" data-category="laravel" data-type="University Portal" data-status="Completed" data-about="Luxor University Website: Full-stack university faculty portal
+
+Classification: Education / University Web Application
+
+Technologies Used: PHP, Laravel, Blade, Eloquent, MySQL
+
+Challenge &amp; Success Story:
+I replaced the faculty's manual, paper-based record keeping with a centralized Laravel portal covering student records, course materials, news publishing, and a dynamic content system — giving staff one reliable source of truth instead of scattered spreadsheets and paper forms.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/graduation-project.webp" alt="Luxor University Website — faculty portal with student management" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/graduation-project.webp" alt="Luxor University Website — faculty portal with student management" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -201,12 +205,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="laravel">
+          <article class="project-card" data-category="laravel" data-type="Restaurant Website" data-status="Completed" data-about="La Casa Pizza: Full-Stack Restaurant Management System
+
+Classification: Restaurant / Hospitality Web Application
+
+Technologies Used: Laravel 12, PHP, Eloquent, Blade, JavaScript, Vite, MySQL
+
+Challenge &amp; Success Story:
+I transformed a static restaurant website into a dynamic Laravel application with an admin dashboard for managing menus, orders, reservations, offers, branches, and restaurant tables. The system also includes authentication, QR Menu, image management, and structured database relationships, providing a scalable solution for managing the restaurant's digital operations.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/la-casa-pizza-thumb.webp" alt="La Casa Pizza — authentic Italian restaurant website" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/la-casa-pizza-thumb.webp" alt="La Casa Pizza — authentic Italian restaurant website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -222,12 +231,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="laravel">
+          <article class="project-card" data-category="laravel" data-type="Healthcare System" data-status="Completed" data-about="Hospital Management System: Patient records & appointment management system
+
+Classification: Healthcare / Hospital Management System
+
+Technologies Used: PHP, Laravel, MySQL, Role-Based Access Control (RBAC)
+
+Challenge &amp; Success Story:
+I digitized a hospital's patient intake and scheduling process — patient records, appointment booking, and doctor scheduling — with role-based permissions so admins, doctors, and receptionists each see exactly what they need, replacing an error-prone paper trail with a reliable digital workflow.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/hospital-management-thumb.webp" alt="Hospital Management System — patient records and appointments" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/hospital-management-thumb.webp" alt="Hospital Management System — patient records and appointments" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -243,12 +257,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Corporate Website" data-status="Completed" data-about="AIMTIA (Athar): National events strategic partner website
+
+Classification: Corporate / Events Management Website
+
+Technologies Used: React.js, JavaScript, REST API
+
+Challenge &amp; Success Story:
+I built a premium, cinematic front-end for Athar (AIMTIA) — Saudi Arabia's strategic partner for managing large-scale national events — combining full-screen sliders, interactive coverage maps, and API-driven content to reflect the scale and prestige of the events they manage.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/aimtia-athar-thumb.webp" alt="AIMTIA (Athar) — Saudi national events strategic partner website" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/aimtia-athar-thumb.webp" alt="AIMTIA (Athar) — Saudi national events strategic partner website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -264,12 +283,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Real Estate Landing Page" data-status="Completed" data-about="Orouba Square: Luxury residential compound landing page
+
+Classification: Real Estate / Marketing Landing Page
+
+Technologies Used: React.js, JavaScript, REST API
+
+Challenge &amp; Success Story:
+I designed and built a conversion-focused landing page for a luxury residential compound, using glassmorphism UI and interactive property showcases to translate a high-end physical development into an equally premium digital first impression.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/orouba-square-thumb.webp" alt="Orouba Square — luxury real estate compound landing page" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/orouba-square-thumb.webp" alt="Orouba Square — luxury real estate compound landing page" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -285,12 +309,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Cultural Showcase" data-status="Completed" data-about="Asswan Culture: Aswan heritage & tourism showcase
+
+Classification: Culture & Tourism / Informational Website
+
+Technologies Used: HTML5, CSS3, JavaScript
+
+Challenge &amp; Success Story:
+I built a scroll-driven storytelling site for Aswan's history and heritage, balancing rich imagery with lightweight, dependency-free animation so the page stays fast and accessible while still feeling immersive.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/asswan.webp" alt="Asswan Culture — heritage showcase" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/asswan.webp" alt="Asswan Culture — heritage showcase" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -306,12 +335,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="laravel">
+          <article class="project-card" data-category="laravel" data-type="E-Commerce Platform" data-status="Completed" data-about="E-Commerce Platform: Full-featured online store with admin panel
+
+Classification: E-Commerce / Online Retail Platform
+
+Technologies Used: PHP, Laravel, Eloquent, MySQL
+
+Challenge &amp; Success Story:
+I delivered a complete online store — catalogue, cart, checkout, and order tracking — paired with an admin panel simple enough for non-technical staff to manage products and update order status without developer help.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/ecommerce-websit.webp" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/ecommerce-websit.webp" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -327,12 +361,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Cafe Website" data-status="Completed" data-about="Mocha Coffee: Specialty coffee roaster & cafe website
+
+Classification: Food & Beverage / Cafe Website
+
+Technologies Used: HTML5, CSS3, JavaScript
+
+Challenge &amp; Success Story:
+I built an interactive order-ahead menu with a responsive cart drawer and a scroll-driven brand story timeline, giving a specialty coffee roaster a digital presence as considered as their in-store experience.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/mocha-coffee-thumb.webp" alt="Mocha Coffee Cup Roasters — specialty coffee cafe website" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/mocha-coffee-thumb.webp" alt="Mocha Coffee Cup Roasters — specialty coffee cafe website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -348,12 +387,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Furniture E-Commerce" data-status="Completed" data-about="Anttikka: Luxury furniture e-commerce store
+
+Classification: E-Commerce / Furniture & Home Décor
+
+Technologies Used: React.js, JavaScript
+
+Challenge &amp; Success Story:
+I built a curated, category-driven shopping experience for a luxury Egyptian furniture brand, prioritizing large imagery and clean navigation so premium products feel premium online too.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/ant.webp" alt="Anttikka — premium Egyptian furniture e-commerce store" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/ant.webp" alt="Anttikka — premium Egyptian furniture e-commerce store" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -369,12 +413,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Law Firm Website" data-status="Completed" data-about="Lexora (Rawad Al-Qanoon): RTL-aware Saudi law firm website
+
+Classification: Legal / Corporate Website
+
+Technologies Used: React.js, JavaScript, Full RTL Support
+
+Challenge &amp; Success Story:
+I delivered a fully RTL-aware Arabic interface for a Saudi law firm covering 15+ legal specializations and attorney profiles — a website that reads as naturally in Arabic as any Western firm's site reads in English.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/lax.webp" alt="Lexora (Rawad Al-Qanoon) — premium Saudi law firm website" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/lax.webp" alt="Lexora (Rawad Al-Qanoon) — premium Saudi law firm website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -390,12 +439,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Dental Clinic Website" data-status="Completed" data-about="Smile Clinic: Aesthetic dentistry booking portal
+
+Classification: Healthcare / Dental Clinic Booking Portal
+
+Technologies Used: HTML5, CSS3, JavaScript
+
+Challenge &amp; Success Story:
+I built a booking portal that lets patients schedule consultations online and browse clinician timelines and case portfolios beforehand — helping patients arrive informed and confident, and reducing no-shows.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/smile-clinic-thumb.webp" alt="Smile Clinic — aesthetic dentistry and booking portal" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/smile-clinic-thumb.webp" alt="Smile Clinic — aesthetic dentistry and booking portal" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -411,12 +465,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="react">
+          <article class="project-card" data-category="react" data-type="Educational Platform" data-status="Completed" data-about="El Sirah Platform: Prophet's biography interactive platform
+
+Classification: Education / Islamic History Platform
+
+Technologies Used: React.js, REST API, YouTube Data API
+
+Challenge &amp; Success Story:
+I combined a responsive historical timeline with a YouTube-synced video playlist and live search, plus live radio integration — turning a rich but scattered body of content into one coherent, explorable platform.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/el-sirah-thumb.webp" alt="El Sirah — Prophet's biography interactive platform" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/el-sirah-thumb.webp" alt="El Sirah — Prophet's biography interactive platform" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
@@ -432,12 +491,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="Islamic Web App" data-status="Completed" data-about="Quran Website: Surah reading & audio recitation app
+
+Classification: Religion / Reading & Audio Web Application
+
+Technologies Used: JavaScript, REST API
+
+Challenge &amp; Success Story:
+I built an instant search-as-you-type experience across surahs and ayahs with synchronized audio recitation, keeping every interaction reload-free so reading and listening stay uninterrupted.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/quran.webp" alt="Quran Website — surahs and audio recitation" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/quran.webp" alt="Quran Website — surahs and audio recitation" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -453,12 +517,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="react">
+          <article class="project-card" data-category="react" data-type="Service Booking Platform" data-status="Completed" data-about="KATO — Integrated Service Center: Bilingual home-maintenance booking platform
+
+Classification: Home Services / Booking Platform
+
+Technologies Used: React.js, REST API, Full RTL Support
+
+Challenge &amp; Success Story:
+I built a bilingual, RTL-aware booking flow for electrical, plumbing, and AC service requests — turning what used to be a phone-call-only process into a few clear steps online, in either language.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/kato-thumb.webp" alt="KATO — integrated service center for home maintenance" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/kato-thumb.webp" alt="KATO — integrated service center for home maintenance" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
@@ -474,12 +543,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="react">
+          <article class="project-card" data-category="react" data-type="Fintech Platform" data-status="Completed" data-about="Egypt Golden Platform: Live gold & currency market platform
+
+Classification: Fintech / Real-Time Market Data Platform
+
+Technologies Used: React.js, REST API, AI-Assisted Analysis
+
+Challenge &amp; Success Story:
+I delivered real-time gold, bullion, and currency pricing with AI-powered market analysis, optimizing render performance so live-updating indicators stay smooth even during volatile price swings.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/egypt-golden-platform-thumb.webp" alt="Egypt Golden Platform — live gold and currency prices" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/egypt-golden-platform-thumb.webp" alt="Egypt Golden Platform — live gold and currency prices" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
@@ -495,12 +569,17 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="frontend">
+          <article class="project-card" data-category="frontend" data-type="E-Commerce Store" data-status="Completed" data-about="Al Rayyan Store: Saudi market e-commerce storefront
+
+Classification: E-Commerce / Retail Storefront
+
+Technologies Used: HTML5, CSS3, JavaScript
+
+Challenge &amp; Success Story:
+I built categorized product browsing paired with a WhatsApp-based checkout flow — meeting Saudi shoppers where they already are instead of forcing an unfamiliar cart-and-card checkout.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <div class="project-device-bar"><i></i><i></i><i></i></div>
-              <img src="assets/images/al-rayyan-store-thumb.webp" alt="Al Rayyan Store — Saudi e-commerce" loading="lazy" onerror="this.style.display='none'">
-            </div>
+              <img src="assets/images/al-rayyan-store-thumb.webp" alt="Al Rayyan Store — Saudi e-commerce" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -557,13 +636,12 @@
         </div>
       </div>
     </section>
-
-    <!-- ════════════════ FOOTER ════════════════ -->
+ <!-- ════════════════ FOOTER ════════════════ -->
     <footer class="footer">
       <div class="container">
         <div class="footer-grid" data-stagger>
           <div class="footer-brand">
-            <a href="index.html#home" class="logo">
+            <a href="#home" class="logo">
               <span class="logo-mark">A</span>
               <span class="logo-text">ABDELWAHAB<em>·</em>ADEL</span>
             </a>
@@ -574,33 +652,25 @@
           <div class="footer-col">
             <h4>NAVIGATE</h4>
             <ul>
-              <li><a href="index.html#about">About</a></li>
-              <li><a href="index.html#services">Services</a></li>
-              <li><a href="projects.html">Projects</a></li>
-              <li><a href="index.html#experience">Experience</a></li>
-              <li><a href="index.html#contact">Contact</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
 
           <div class="footer-col">
             <h4>SERVICES</h4>
             <ul>
-              <li><a href="index.html#services">Full-Stack</a></li>
-              <li><a href="index.html#services">Backend</a></li>
-              <li><a href="index.html#services">Frontend</a></li>
-              <li><a href="index.html#services">Integrations</a></li>
+              <li><a href="#services">Full-Stack</a></li>
+              <li><a href="#services">Backend</a></li>
+              <li><a href="#services">Frontend</a></li>
+              <li><a href="#services">Integrations</a></li>
             </ul>
           </div>
 
-          <div class="footer-col">
-            <h4>CONNECT</h4>
-            <ul>
-              <li><a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener">GitHub</a></li>
-              <li><a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="https://wa.me/201100340198" target="_blank" rel="noopener">WhatsApp</a></li>
-              <li><a href="https://t.me/Abdelwahab77" target="_blank" rel="noopener">Telegram</a></li>
-            </ul>
-          </div>
+          
         </div>
 
         <div class="footer-bottom">
