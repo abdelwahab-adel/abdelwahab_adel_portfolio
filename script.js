@@ -18,6 +18,65 @@
   }
 
   /* ─────────────────────────────────────────────────
+     Intro preloader — plays ONLY on an actual page
+     reload (F5 / reload button). Clicking a nav link
+     (Home, Projects, etc.) and Back/Forward navigation
+     both skip it instantly, so browsing the site never
+     gets interrupted by the intro replaying.
+     ───────────────────────────────────────────────── */
+  (() => {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+
+    function getNavigationType() {
+      try {
+        const entries = performance.getEntriesByType('navigation');
+        if (entries && entries.length) return entries[0].type;
+      } catch (e) {}
+      if (performance.navigation) {
+        if (performance.navigation.type === 1) return 'reload';
+        if (performance.navigation.type === 2) return 'back_forward';
+      }
+      return 'navigate';
+    }
+
+    if (getNavigationType() !== 'reload') {
+      preloader.remove();
+      return;
+    }
+
+    const wordmarkEl = preloader.querySelector('.preloader-wordmark');
+    const roleEl = preloader.querySelector('.preloader-role');
+    document.body.classList.add('is-preloading');
+
+    function exit() {
+      preloader.classList.add('is-hiding');
+      document.body.classList.remove('is-preloading');
+      window.setTimeout(() => preloader.remove(), 650);
+    }
+
+    if (reduceMotion) {
+      wordmarkEl.classList.add('is-static');
+      roleEl.classList.add('is-in');
+      window.setTimeout(exit, 400);
+      return;
+    }
+
+    if (hasGSAP && wordmarkEl) {
+      const chars = splitChars(wordmarkEl);
+      gsap.set(wordmarkEl, { opacity: 1 });
+      gsap.set(chars, { opacity: 0, y: 26 });
+      gsap.timeline({ onComplete: () => window.setTimeout(exit, 550) })
+        .to(chars, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', stagger: 0.03 })
+        .to(roleEl, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, '-=0.25');
+    } else {
+      wordmarkEl.classList.add('is-static');
+      roleEl.classList.add('is-in');
+      window.setTimeout(exit, 1200);
+    }
+  })();
+
+  /* ─────────────────────────────────────────────────
      Split-text utilities (no paid SplitText plugin needed)
      ───────────────────────────────────────────────── */
   function splitChars(root) {

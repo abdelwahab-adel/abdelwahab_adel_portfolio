@@ -95,6 +95,59 @@ em { font-style: normal; }
 
 .mono { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.04em; }
 
+/* ─── INTRO PRELOADER ────────────────────────────── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+  transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease);
+}
+.preloader.is-hiding { opacity: 0; visibility: hidden; }
+
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 0 24px;
+}
+
+.preloader-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 8vw, 104px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text-hi);
+  white-space: nowrap;
+  opacity: 0;
+}
+.preloader-wordmark em { font-style: normal; color: var(--text-faint); padding: 0 0.05em; }
+.preloader-wordmark.is-static { opacity: 1; transition: opacity 0.5s var(--ease); }
+
+.preloader-role {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--text-mid);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.preloader-role.is-in { opacity: 1; transform: translateY(0); }
+
+body.is-preloading { overflow: hidden; }
+
+@media (max-width: 560px) {
+  .preloader-wordmark { font-size: 9vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader-wordmark, .preloader-role { opacity: 1 !important; transform: none !important; }
+}
+
 /* ─── ACCESSIBILITY ──────────────────────────────── */
 .skip-link {
   position: absolute;
