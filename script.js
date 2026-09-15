@@ -18,11 +18,11 @@
   }
 
   /* ─────────────────────────────────────────────────
-     Intro preloader — plays ONLY on an actual page
-     reload (F5 / reload button). Clicking a nav link
-     (Home, Projects, etc.) and Back/Forward navigation
-     both skip it instantly, so browsing the site never
-     gets interrupted by the intro replaying.
+     Intro preloader — plays on an actual page reload
+     (F5 / reload button) AND on the very first page a
+     visitor lands on this session. Clicking between
+     Home/Projects afterwards, and Back/Forward, both
+     skip it so browsing the site isn't interrupted.
      ───────────────────────────────────────────────── */
   (() => {
     const preloader = document.getElementById('preloader');
@@ -40,10 +40,15 @@
       return 'navigate';
     }
 
-    if (getNavigationType() !== 'reload') {
+    let isFirstVisitThisSession = true;
+    try { isFirstVisitThisSession = !sessionStorage.getItem('pw-visited'); } catch (e) {}
+
+    if (getNavigationType() !== 'reload' && !isFirstVisitThisSession) {
       preloader.remove();
       return;
     }
+
+    try { sessionStorage.setItem('pw-visited', '1'); } catch (e) {}
 
     const wordmarkEl = preloader.querySelector('.preloader-wordmark');
     const roleEl = preloader.querySelector('.preloader-role');
