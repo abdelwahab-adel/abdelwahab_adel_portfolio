@@ -463,7 +463,7 @@ body.is-preloading { overflow: hidden; }
 
 @media (max-width: 900px) {
   .nav-desktop { display: none; }
-  .menu-btn { display: flex; }
+  .menu-btn { display: flex;margin-left: -50px; }
   .nav-cta { display: none; }
   .nav-inner { padding: 8px 8px 8px 16px; }
 }
@@ -1947,7 +1947,8 @@ body.pm-open { overflow: hidden; }
   .project-track { padding-left: 20px; }
   .project-card { width: 88vw; min-height: 440px; padding: 24px; }
   .project-card-content { max-width: 100%; }
-  .project-more-tile { width: 180px; min-height: 320px; }
+  .project-more-tile { width: 390px;
+        min-height: 385px; }
 }
 
 /* ════════════════════════════════════════════════════
