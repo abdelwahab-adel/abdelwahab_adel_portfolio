@@ -318,27 +318,48 @@ body.is-preloading { overflow: hidden; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
   color: var(--text-hi);
 }
+
 .logo-mark {
+  width: 55px;
+  height: 42px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  background: var(--text-hi);
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: var(--font-mono);
-  border-radius: var(--radius-sm);
-}
-.logo-text em { color: var(--text-faint); font-style: normal; padding: 0 2px; }
 
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+
+  background: #fff;
+}
+
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-hi);
+}
+
+.logo-text em {
+  color: var(--text-faint);
+  font-style: normal;
+  padding: 0 4px;
+}
 .nav-desktop {
   display: flex;
   align-items: center;
@@ -2674,41 +2695,4 @@ a.contact-info-card:hover {
   to {
     transform: translateX(-50%);
   }
-}
-
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-}
-
-.logo-mark {
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.logo-mark img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-        background: azure;
-}
-
-.logo-text {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #111;
-}
-
-.logo-text em {
-    font-style: normal;
-    margin: 0 5px;
 }
