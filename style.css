@@ -1870,23 +1870,23 @@ body.pm-open { overflow: hidden; }
 
 /* "+N more" CTA tile — closes out the row */
 .project-more-tile {
-  position: relative;
-  flex: 0 0 auto;
-  width: 240px;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 10px;
-  padding: 32px;
-  background: var(--text-hi);
-  color: white;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  scroll-snap-align: start;
-  will-change: transform;
-  transition: transform 0.25s ease-out, opacity 0.35s var(--ease);
+    position: relative;
+    flex: 0 0 auto;
+    width: 90%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: revert;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px;
+    background: var(--text-hi);
+    color: white;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    scroll-snap-align: start;
+    will-change: transform;
+    transition: transform 0.25s ease-out, opacity 0.35s var(--ease);
 }
 .project-more-tile.hide { opacity: 0 !important; transform: scale(0.92) !important; pointer-events: none; }
 .project-more-tile::before {
