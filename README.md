@@ -1,7 +1,6 @@
 # Abdelwahab Adel — Premium Portfolio
 
-A complete redesign of the personal portfolio into a premium, light, editorial software-engineering studio website — visually inspired by [CodeMZ](https://www.codemz.com/) with full original identity, content, and structure preserved.
-
+A complete redesign of the personal portfolio into a premium, light, editorial software-engineering studio website — 
 ## What you get
 
 - **No build step, no framework** — just open `index.html`
