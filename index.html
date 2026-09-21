@@ -22,7 +22,10 @@
   <meta property="og:url" content="https://abdelwahab-adel.dev/">
   <meta property="og:title" content="Abdelwahab Adel — Full-Stack Software Engineer">
   <meta property="og:description" content="Building scalable digital systems with PHP, Laravel, React.js & MySQL. 49+ production-grade projects.">
-  <meta property="og:image" content="https://abdelwahab-adel.dev/assets/images/profile-hero.jpg">
+  <meta property="og:image" content="https://abdelwahab-adel.dev/assets/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Abdelwahab Adel — Full-Stack Developer (PHP, Laravel, React)">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Abdelwahab Adel">
 
@@ -30,17 +33,15 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Abdelwahab Adel — Full-Stack Software Engineer">
   <meta name="twitter:description" content="Building scalable digital systems with PHP, Laravel, React.js & MySQL.">
-  <meta name="twitter:image" content="https://abdelwahab-adel.dev/assets/images/profile-hero.jpg">
+  <meta name="twitter:image" content="https://abdelwahab-adel.dev/assets/images/og-cover.jpg">
+  <meta name="twitter:image:alt" content="Abdelwahab Adel — Full-Stack Developer (PHP, Laravel, React)">
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <!-- Fonts (self-hosted, see @font-face in style.css) -->
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
+  <noscript><link rel="stylesheet" href="assets/noscript.css"></noscript>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -50,13 +51,12 @@
     "name": "Abdelwahab Adel",
     "jobTitle": "Full-Stack Software Engineer",
     "url": "https://abdelwahab-adel.dev/",
-    "image": "assets/images/profile-hero.jpg",
+    "image": "https://abdelwahab-adel.dev/assets/images/profile-hero.jpg",
     "sameAs": [
       "https://www.linkedin.com/in/abdelwahab-adel-57265926b",
       "https://github.com/abdelwahab-adel/",
       "https://www.facebook.com/profile.php?id=100008450681129",
-      "https://www.instagram.com/abd_elwahab_adel",
-      "https://wa.me/201100340198"
+      "https://www.instagram.com/abd_elwahab_adel"
     ],
     "knowsAbout": ["PHP", "Laravel", "MySQL", "React.js", "JavaScript", "HTML5", "CSS3", "Sass", "Git", "Linux", "REST API", "Software Architecture"],
     "worksFor": {"@type": "Organization", "name": "Freelance"},
@@ -68,12 +68,11 @@
 <body>
 
   <!-- ════════════════ INTRO PRELOADER ════════════════ -->
-  <div id="preloader" class="preloader">
+  <div id="preloader" class="preloader" aria-hidden="true">
     <div class="preloader-inner">
       <span class="preloader-wordmark">ABDELWAHAB<em>·</em>ADEL</span>
       <span class="preloader-role mono">FULL-STACK DEVELOPER</span>
     </div>
-    <noscript><style>.preloader-wordmark,.preloader-role{opacity:1!important;transform:none!important;}</style></noscript>
   </div>
 
   <!-- Skip link -->
@@ -85,17 +84,12 @@
   <!-- Scroll progress -->
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-  <main id="main">
-
     <!-- ════════════════ NAVBAR ════════════════ -->
     <header class="nav" id="nav">
       <div class="nav-inner">
-          <a href="index.html#home"  class="logo" aria-label="Abdelwahab Adel — home">
+          <a href="#home" class="logo" aria-label="Abdelwahab Adel — home">
     <span class="logo-mark">
-        <img 
-            src="assets/images/ChatGPT Image Sep 15, 2026, 07_36_10 PM.png" 
-            alt="Abdelwahab Adel Logo"
-        >
+        <img src="assets/images/logo.webp" alt="" width="220" height="98">
     </span>
 
     <span class="logo-text">
@@ -115,7 +109,7 @@
         </nav>
 
         <div class="nav-actions">
-          <a href="index.html#contact" class="btn btn-primary nav-cta">
+          <a href="#contact" class="btn btn-primary nav-cta">
             <span>Let's Talk</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
@@ -150,6 +144,8 @@
       </div>
     </nav>
 
+    <main id="main" tabindex="-1">
+
     <!-- ════════════════ HERO ════════════════ -->
     <section id="home" class="hero">
       <div class="container">
@@ -157,9 +153,9 @@
           <div class="hero-text">
             
 
-            <h1 class="hero-title-v2">
+            <h1 class="hero-title-v2" aria-label="Hi, I'm Abdelwahab. I build scalable web apps, clean Laravel APIs, modern interfaces and full-stack platforms.">
               Hi, I'm Abdelwahab
-              <span class="hero-typing-line">I build <span id="typing-text" class="typing-text"></span><span class="typing-cursor">|</span></span>
+              <span class="hero-typing-line" aria-hidden="true">I build <span id="typing-text" class="typing-text">scalable web apps.</span><span class="typing-cursor">|</span></span>
             </h1>
 
             <p class="hero-desc-v2 reveal">
@@ -203,7 +199,7 @@
             <div class="portrait-frame" aria-hidden="true"></div>
             <div class="portrait-img">
               <div class="portrait-placeholder">
-                <img src="assets/images/profile-hero.jpg" alt="Abdelwahab Adel — Full-Stack Developer" srcset="">
+                <img src="assets/images/profile-hero.jpg" alt="Abdelwahab Adel — Full-Stack Developer" width="1365" height="1600" fetchpriority="high" decoding="async">
               </div>
             </div>
             <div class="portrait-badge b1" data-parallax="0.1" aria-hidden="true">
@@ -230,38 +226,34 @@
     <!-- ════════════════ MARQUEE ════════════════ -->
     <section class="marquee" aria-label="Technology stack">
       <div class="marquee-track">
-       <div class="marquee">
-  <div class="marquee-inner">
-
-    <img src="https://cdn.simpleicons.org/php" alt="PHP">
-    <img src="https://cdn.simpleicons.org/laravel" alt="Laravel">
-    <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript">
-    <img src="https://cdn.simpleicons.org/react" alt="React">
-    <img src="https://cdn.simpleicons.org/mysql" alt="MySQL">
-    <img src="https://cdn.simpleicons.org/html5" alt="HTML5">
-    <img src="https://cdn.simpleicons.org/css" alt="CSS3">
-    <img src="https://cdn.simpleicons.org/sass" alt="Sass">
-    <img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind CSS">
-    <img src="https://cdn.simpleicons.org/bootstrap" alt="Bootstrap">
-    <img src="https://cdn.simpleicons.org/git" alt="Git">
-    <img src="https://cdn.simpleicons.org/linux" alt="Linux">
-
-    <!-- Duplicate the icon set to create a seamless infinite scroll -->
-    <img src="https://cdn.simpleicons.org/php" alt="PHP">
-    <img src="https://cdn.simpleicons.org/laravel" alt="Laravel">
-    <img src="https://cdn.simpleicons.org/javascript" alt="JavaScript">
-    <img src="https://cdn.simpleicons.org/react" alt="React">
-    <img src="https://cdn.simpleicons.org/mysql" alt="MySQL">
-    <img src="https://cdn.simpleicons.org/html5" alt="HTML5">
-    <img src="https://cdn.simpleicons.org/css" alt="CSS3">
-    <img src="https://cdn.simpleicons.org/sass" alt="Sass">
-    <img src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind CSS">
-    <img src="https://cdn.simpleicons.org/bootstrap" alt="Bootstrap">
-    <img src="https://cdn.simpleicons.org/git" alt="Git">
-    <img src="https://cdn.simpleicons.org/linux" alt="Linux">
-
-  </div> 
-</div>
+        <ul class="marquee-group">
+          <li><img src="assets/icons/tech/php.svg" alt="PHP" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/laravel.svg" alt="Laravel" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/javascript.svg" alt="JavaScript" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/react.svg" alt="React" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/mysql.svg" alt="MySQL" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/html5.svg" alt="HTML5" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/css.svg" alt="CSS3" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/sass.svg" alt="Sass" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/tailwindcss.svg" alt="Tailwind CSS" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/bootstrap.svg" alt="Bootstrap" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/git.svg" alt="Git" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/linux.svg" alt="Linux" width="50" height="50"></li>
+        </ul>
+        <ul class="marquee-group" aria-hidden="true">
+          <li><img src="assets/icons/tech/php.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/laravel.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/javascript.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/react.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/mysql.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/html5.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/css.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/sass.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/tailwindcss.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/bootstrap.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/git.svg" alt="" width="50" height="50"></li>
+          <li><img src="assets/icons/tech/linux.svg" alt="" width="50" height="50"></li>
+        </ul>
       </div>
     </section>
 
@@ -273,7 +265,7 @@
             <span class="section-pill">01 / About</span>
             <div class="title-row">
 
-              <canvas id="pixelIcon" width="80" height="80" class="pixel-icon"></canvas>
+              <canvas width="80" height="80" class="pixel-icon" aria-hidden="true"></canvas>
 
 
 <h2 class="section-title">
@@ -289,7 +281,7 @@
         <div class="about-hero">
           <div class="about-photo reveal">
             <div class="about-photo-ph">
-                <img src="assets/images/profile.jpeg" alt="Abdelwahab Adel" srcset="">
+                <img src="assets/images/profile.jpeg" alt="Abdelwahab Adel" width="643" height="702" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -446,7 +438,7 @@
                 </span>
                 <span class="skill-value">92%</span>
               </div>
-              <div class="progress-track"><div class="progress-bar" data-target="92"></div></div>
+              <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-target="92"></div></div>
             </div>
             <div class="skill-progress-item">
               <div class="skill-row">
@@ -456,7 +448,7 @@
                 </span>
                 <span class="skill-value">88%</span>
               </div>
-              <div class="progress-track"><div class="progress-bar" data-target="88"></div></div>
+              <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-target="88"></div></div>
             </div>
             <div class="skill-progress-item">
               <div class="skill-row">
@@ -466,7 +458,7 @@
                 </span>
                 <span class="skill-value">95%</span>
               </div>
-              <div class="progress-track"><div class="progress-bar" data-target="95"></div></div>
+              <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-target="95"></div></div>
             </div>
             <div class="skill-progress-item">
               <div class="skill-row">
@@ -476,7 +468,7 @@
                 </span>
                 <span class="skill-value">80%</span>
               </div>
-              <div class="progress-track"><div class="progress-bar" data-target="80"></div></div>
+              <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-target="80"></div></div>
             </div>
             <div class="skill-progress-item">
               <div class="skill-row">
@@ -486,7 +478,7 @@
                 </span>
                 <span class="skill-value">85%</span>
               </div>
-              <div class="progress-track"><div class="progress-bar" data-target="85"></div></div>
+              <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-target="85"></div></div>
             </div>
             <div class="skill-progress-item">
               <div class="skill-row">
@@ -496,7 +488,7 @@
                 </span>
                 <span class="skill-value">90%</span>
               </div>
-              <div class="progress-track"><div class="progress-bar" data-target="90"></div></div>
+              <div class="progress-track" aria-hidden="true"><div class="progress-bar" data-target="90"></div></div>
             </div>
           </div>
         </div>
@@ -956,27 +948,27 @@
 
         <div class="workflow-grid">
           <div class="workflow-steps" id="workflow-steps" data-stagger role="tablist" aria-label="Workflow steps">
-            <button type="button" class="workflow-step is-active" role="tab" aria-selected="true" data-step="0">
+            <button type="button" class="workflow-step is-active" role="tab" id="wf-tab-0" aria-controls="wf-panel-0" aria-selected="true" tabindex="0" data-step="0">
               <span class="step-num">01</span>
               <span class="step-text"><strong>Discovery</strong><small>Understanding goals &amp; constraints <span class="step-duration">3 days</span></small></span>
             </button>
-            <button type="button" class="workflow-step" role="tab" aria-selected="false" data-step="1">
+            <button type="button" class="workflow-step" role="tab" id="wf-tab-1" aria-controls="wf-panel-1" aria-selected="false" tabindex="-1" data-step="1">
               <span class="step-num">02</span>
               <span class="step-text"><strong>Planning</strong><small>Architecture, stack &amp; timeline <span class="step-duration">3 days</span></small></span>
             </button>
-            <button type="button" class="workflow-step" role="tab" aria-selected="false" data-step="2">
+            <button type="button" class="workflow-step" role="tab" id="wf-tab-2" aria-controls="wf-panel-2" aria-selected="false" tabindex="-1" data-step="2">
               <span class="step-num">03</span>
               <span class="step-text"><strong>Design</strong><small>Wireframes &amp; component systems <span class="step-duration">4 days</span></small></span>
             </button>
-            <button type="button" class="workflow-step" role="tab" aria-selected="false" data-step="3">
+            <button type="button" class="workflow-step" role="tab" id="wf-tab-3" aria-controls="wf-panel-3" aria-selected="false" tabindex="-1" data-step="3">
               <span class="step-num">04</span>
               <span class="step-text"><strong>Development</strong><small>Agile sprints, weekly builds <span class="step-duration">2 weeks</span></small></span>
             </button>
-            <button type="button" class="workflow-step" role="tab" aria-selected="false" data-step="4">
+            <button type="button" class="workflow-step" role="tab" id="wf-tab-4" aria-controls="wf-panel-4" aria-selected="false" tabindex="-1" data-step="4">
               <span class="step-num">05</span>
               <span class="step-text"><strong>Testing</strong><small>QA, performance &amp; a11y checks <span class="step-duration">3 days</span></small></span>
             </button>
-            <button type="button" class="workflow-step" role="tab" aria-selected="false" data-step="5">
+            <button type="button" class="workflow-step" role="tab" id="wf-tab-5" aria-controls="wf-panel-5" aria-selected="false" tabindex="-1" data-step="5">
               <span class="step-num">06</span>
               <span class="step-text"><strong>Launch &amp; Support</strong><small>Deploy, monitor, maintain <span class="step-duration">1 week</span></small></span>
             </button>
@@ -993,7 +985,7 @@
 <div class="code-panel-body process-code-body">
 
   <!-- DISCOVERY/BRIEF.MD -->
-  <div class="process-code-frame is-active" data-frame="0">
+  <div class="process-code-frame is-active" id="wf-panel-0" role="tabpanel" aria-labelledby="wf-tab-0" data-frame="0">
     <div class="pt-cmt">// Discovery — mapping the domain</div>
 
     <div>
@@ -1017,7 +1009,7 @@
 
 
   <!-- PLANNING/ROADMAP.MD -->
-  <div class="process-code-frame" data-frame="1">
+  <div class="process-code-frame" id="wf-panel-1" role="tabpanel" aria-labelledby="wf-tab-1" aria-hidden="true" data-frame="1">
     <div class="pt-cmt">// Planning — architecture &amp; roadmap</div>
 
     <div>
@@ -1041,7 +1033,7 @@
 
 
   <!-- DESIGN/SYSTEM.MD -->
-  <div class="process-code-frame" data-frame="2">
+  <div class="process-code-frame" id="wf-panel-2" role="tabpanel" aria-labelledby="wf-tab-2" aria-hidden="true" data-frame="2">
     <div class="pt-cmt">// Design — wireframes &amp; UI system</div>
 
     <div>
@@ -1065,7 +1057,7 @@
 
 
   <!-- SPRINTS/SPRINT-01.MD -->
-  <div class="process-code-frame" data-frame="3">
+  <div class="process-code-frame" id="wf-panel-3" role="tabpanel" aria-labelledby="wf-tab-3" aria-hidden="true" data-frame="3">
     <div class="pt-cmt">// Sprint 1 — core modules</div>
 
     <div>
@@ -1089,7 +1081,7 @@
 
 
   <!-- QA/REPORT.MD -->
-  <div class="process-code-frame" data-frame="4">
+  <div class="process-code-frame" id="wf-panel-4" role="tabpanel" aria-labelledby="wf-tab-4" aria-hidden="true" data-frame="4">
     <div class="pt-cmt">// Testing — quality &amp; performance</div>
 
     <div>
@@ -1113,7 +1105,7 @@
 
 
   <!-- LAUNCH/CHECKLIST.MD -->
-  <div class="process-code-frame" data-frame="5">
+  <div class="process-code-frame" id="wf-panel-5" role="tabpanel" aria-labelledby="wf-tab-5" aria-hidden="true" data-frame="5">
     <div class="pt-cmt">// Launch — go live with confidence</div>
 
     <div>
@@ -1191,7 +1183,7 @@ Technologies Used: PHP, Laravel, MySQL, Blade.
 Challenge &amp; Success Story: Faculties needed one place to publish news, manage student records, and handle course content without juggling spreadsheets and paper forms. I designed a relational schema for students, courses and announcements, then built an admin dashboard with role-based access so staff could manage content without touching code. The result is a fast, maintainable portal that the faculty still uses to manage day-to-day academic operations.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/graduation-project.webp" alt="Luxor University Website — faculty portal with student management" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/graduation-project.webp" alt="Luxor University Website — faculty portal with student management" loading="lazy" width="1200" height="539"></div><button type="button" class="project-open" aria-label="View case study: Luxor University Website"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -1201,7 +1193,7 @@ Challenge &amp; Success Story: Faculties needed one place to publish news, manag
                 <span>PHP</span><span>Laravel</span><span>MySQL</span><span>Blade</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/abdelwahab-adel/Unvinersity-Website.git" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Unvinersity-Website" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                 <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
@@ -1216,7 +1208,7 @@ Technologies Used: Laravel 12, PHP, Eloquent, Blade, JavaScript, Vite, MySQL.
 Challenge &amp; Success Story: I transformed a static restaurant website into a dynamic Laravel application with an admin dashboard for managing menus, orders, reservations, offers, branches, and restaurant tables. The system also includes authentication, QR Menu, image management, and structured database relationships, providing a scalable solution for managing the restaurant's digital operations.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/la-casa-pizza-thumb.webp" alt="La Casa Pizza — authentic Italian restaurant website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/la-casa-pizza-thumb.webp" alt="La Casa Pizza — authentic Italian restaurant website" loading="lazy" width="1200" height="580"></div><button type="button" class="project-open" aria-label="View case study: La Casa Pizza"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -1227,7 +1219,7 @@ Challenge &amp; Success Story: I transformed a static restaurant website into a 
               </div>
               <div class="project-links">
                 <a href="https://casa-pizza.great-site.net/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/La-Casa-Pizza-Restaurant-Management-System" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -1241,7 +1233,7 @@ Technologies Used: PHP, Laravel, MySQL, Role-Based Access Control.
 Challenge &amp; Success Story: Clinics needed a single system to manage patient records, doctor schedules, and appointment booking while keeping sensitive medical data properly access-controlled. I engineered a role-based system separating admin, doctor, and reception permissions, with an appointments engine that prevents double-booking and a reporting layer for basic analytics — turning a paper-based process into a reliable digital workflow.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/hospital-management-thumb.webp" alt="Hospital Management System — patient records and appointments" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/hospital-management-thumb.webp" alt="Hospital Management System — patient records and appointments" loading="lazy" width="1200" height="611"></div><button type="button" class="project-open" aria-label="View case study: Hospital Management System"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -1251,7 +1243,7 @@ Challenge &amp; Success Story: Clinics needed a single system to manage patient 
                 <span>PHP</span><span>Laravel</span><span>MySQL</span><span>RBAC</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/abdelwahab-adel/Hospital-Management-System.git" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Hospital-Management-System" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                 <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
@@ -1266,7 +1258,7 @@ Technologies Used: HTML5, CSS3, JavaScript.
 Challenge &amp; Success Story: Mocha needed more than a menu page — they wanted an order-ahead experience with a shopping cart and a brand story that stood out from generic cafe sites. I built an interactive order-ahead menu, a responsive cart drawer, and a scroll-based brand timeline, giving the cafe a digital presence that matches its specialty-coffee positioning.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/mocha-coffee-thumb.webp" alt="Mocha Coffee Cup Roasters — specialty coffee cafe website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/mocha-coffee-thumb.webp" alt="Mocha Coffee Cup Roasters — specialty coffee cafe website" loading="lazy" width="1200" height="560"></div><button type="button" class="project-open" aria-label="View case study: Mocha Coffee"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -1277,7 +1269,7 @@ Challenge &amp; Success Story: Mocha needed more than a menu page — they wante
               </div>
               <div class="project-links">
                 <a href="https://mocha-coffee-cup.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Mocha-Coffee-Cup" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -1291,10 +1283,10 @@ Technologies Used: React.js, JavaScript, Responsive Design.
 Challenge &amp; Success Story: Anttikka needed an online store that matched the premium feel of its furniture collections — solid wood, natural marble, and hotel-quality pieces — and supported Egyptian shoppers with installment plans up to 36 months. I built a curated catalog with collection-based browsing (Modulix, Vendra, Domira, Kavon), category-driven navigation, and a clear product-to-checkout path, giving the brand a digital flagship that matches its in-store experience.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/ant.webp" alt="Anttikka — premium Egyptian furniture e-commerce store" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/ant.webp" alt="Anttikka — premium Egyptian furniture e-commerce store" loading="lazy" width="1200" height="547"></div><button type="button" class="project-open" aria-label="View case study: Anttikka"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
-              <span class="project-tag-pill"><span class="filter-dot"></span>react</span>
+              <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
               <h3>Anttikka</h3>
               <p>High-end Egyptian e-commerce store for luxury furniture and home décor — curated collections, category-driven browsing, and a fully responsive shopping experience.</p>
               <div class="project-stack">
@@ -1302,7 +1294,7 @@ Challenge &amp; Success Story: Anttikka needed an online store that matched the 
               </div>
               <div class="project-links">
                 <a href="https://anttikka-eg.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Anttikka_Eg" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -1316,7 +1308,7 @@ Technologies Used: HTML, CSS, JavaScript, Responsive Design.
 Challenge &amp; Success Story: The brief was a fashion storefront built around discovery and conversion rather than a plain product list. I structured category shopping, daily deals, seasonal collections, sportswear, and featured brands into one cohesive browsing flow, then layered in new arrivals, testimonials, and newsletter capture to keep visitors engaged and coming back.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/zay-fashion-thumb.webp" alt="Zay Fashion E-commerce — fashion storefront and product discovery" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/zay-fashion-thumb.webp" alt="Zay Fashion E-commerce — fashion storefront and product discovery" loading="lazy" width="1200" height="569"></div><button type="button" class="project-open" aria-label="View case study: Zay Fashion E-commerce"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -1327,7 +1319,7 @@ Challenge &amp; Success Story: The brief was a fashion storefront built around d
               </div>
               <div class="project-links">
                 <a href="https://clothing-tau-seven.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Website <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Clothing" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -1341,7 +1333,7 @@ Technologies Used: HTML5, CSS3, JavaScript.
 Challenge &amp; Success Story: The clinic wanted patients to book consultations online while still showcasing the clinicians and case results with a premium, trustworthy feel. I implemented an online consultation booking form, an interactive clinician timeline, and responsive case portfolios, resulting in a portal that builds trust before a patient ever visits in person.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/smile-clinic-thumb.webp" alt="Smile Clinic — aesthetic dentistry and booking portal" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/smile-clinic-thumb.webp" alt="Smile Clinic — aesthetic dentistry and booking portal" loading="lazy" width="1200" height="545"></div><button type="button" class="project-open" aria-label="View case study: Smile Clinic"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -1352,7 +1344,7 @@ Challenge &amp; Success Story: The clinic wanted patients to book consultations 
               </div>
               <div class="project-links">
                 <a href="https://smile-clinic-sage.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Smile-Clinic" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -1366,7 +1358,7 @@ Technologies Used: HTML5, CSS3, JavaScript.
 Challenge &amp; Success Story: The brief was to present Aswan's history and tourism appeal to a global audience in a way that felt visual rather than encyclopedic. I structured the content into scroll-driven sections with rich imagery and lightweight animations, keeping load times low while still delivering an immersive cultural narrative.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/asswan.webp" alt="Asswan Culture — heritage showcase" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/asswan.webp" alt="Asswan Culture — heritage showcase" loading="lazy" width="1200" height="545"></div><button type="button" class="project-open" aria-label="View case study: Asswan Culture"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -1377,7 +1369,7 @@ Challenge &amp; Success Story: The brief was to present Aswan's history and tour
               </div>
               <div class="project-links">
                 <a href="https://ambassa.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/ambassa" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -1391,7 +1383,7 @@ Technologies Used: PHP, Laravel, MySQL, Payment Gateway Integration.
 Challenge &amp; Success Story: The goal was a store that could handle a full retail workflow — catalogue, cart, checkout, and order tracking — while giving the store owner a simple dashboard to manage stock and orders without developer help. I built a normalized product/order schema, a secure checkout flow, and an admin panel with real-time order status updates, resulting in a store that's genuinely usable by non-technical staff.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/ecommerce-websit.webp" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/ecommerce-websit.webp" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" width="1200" height="656"></div><button type="button" class="project-open" aria-label="View case study: E-Commerce Platform"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -1416,7 +1408,7 @@ Technologies Used: HTML, CSS, JavaScript, Responsive Design.
 Challenge &amp; Success Story: The brief was to document and preserve Nubian heritage — history, arts, language, music, traditions, cuisine, tourism, and notable historical figures — in a single accessible digital space. I built an interactive bilingual experience structured around these themes, giving visitors an engaging way to explore Nubian culture rather than reading through a static archive.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/nubian-project.webp" alt="Nubian Cultural Heritage Website — interactive Nubian history and culture experience" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/nubian-project.webp" alt="Nubian Cultural Heritage Website — interactive Nubian history and culture experience" loading="lazy" width="1200" height="575"></div><button type="button" class="project-open" aria-label="View case study: Nubian Cultural Heritage Website"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -1427,12 +1419,11 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
               </div>
               <div class="project-links">
                 <a href="https://nubian-as.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Website <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/nubian" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article> 
 
-           <article>
            <a href="projects.html" class="project-more-tile" data-category="all">
                 <span class="project-more-num">9+</span>
                 <span class="project-more-label">More Case Studies<br>&amp; Full Details</span>
@@ -1440,13 +1431,6 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </span>
               </a>
-          </article>
-
-           <article>
-    
-          </article>
- <article>
-          </article>
 
 
         
@@ -1455,7 +1439,7 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
 
           <div class="projects-controls">
             <span class="projects-controls-text" id="projects-count-text">
-              Showing <strong>8</strong> of <strong>49+</strong> projects · <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" style="color: var(--text-hi); font-weight: 500;">View all on GitHub →</a>
+              Showing <strong>10</strong> of <strong>49+</strong> projects · <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="projects-controls-link">View all on GitHub →</a>
             </span>
             <a href="projects.html" class="btn btn-ghost projects-page-link">
               <span>View Full Case Studies</span>
@@ -1512,37 +1496,37 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
               <div class="dash-body">
                 <div class="dash-row">
                   <span class="dash-key">FRONTEND</span>
-                  <span class="dash-bar"><i style="--w:96%"></i></span>
+                  <span class="dash-bar"><i class="w-96"></i></span>
                   <span class="dash-val">READY</span>
                 </div>
                 <div class="dash-row">
                   <span class="dash-key">BACKEND</span>
-                  <span class="dash-bar"><i style="--w:94%"></i></span>
+                  <span class="dash-bar"><i class="w-94"></i></span>
                   <span class="dash-val">ONLINE</span>
                 </div>
                 <div class="dash-row">
                   <span class="dash-key">DATABASE</span>
-                  <span class="dash-bar"><i style="--w:91%"></i></span>
+                  <span class="dash-bar"><i class="w-91"></i></span>
                   <span class="dash-val">CONNECTED</span>
                 </div>
                 <div class="dash-row">
                   <span class="dash-key">API</span>
-                  <span class="dash-bar"><i style="--w:88%"></i></span>
+                  <span class="dash-bar"><i class="w-88"></i></span>
                   <span class="dash-val">STABLE</span>
                 </div>
                 <div class="dash-row">
                   <span class="dash-key">RESPONSIVE</span>
-                  <span class="dash-bar"><i style="--w:100%"></i></span>
+                  <span class="dash-bar"><i class="w-100"></i></span>
                   <span class="dash-val">100%</span>
                 </div>
                 <div class="dash-row">
                   <span class="dash-key">SECURITY</span>
-                  <span class="dash-bar"><i style="--w:97%"></i></span>
+                  <span class="dash-bar"><i class="w-97"></i></span>
                   <span class="dash-val">ENABLED</span>
                 </div>
                 <div class="dash-row">
                   <span class="dash-key">PERFORMANCE</span>
-                  <span class="dash-bar"><i style="--w:92%"></i></span>
+                  <span class="dash-bar"><i class="w-92"></i></span>
                   <span class="dash-val">OPTIMIZED</span>
                 </div>
                 <div class="dash-divider"></div>
@@ -1621,7 +1605,7 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
 
   <article class="edu-card reveal">
     <div class="edu-icon-box">
-      <img src="assets/images/luxor.jpg" alt="Luxor University">
+      <img src="assets/images/luxor.jpg" alt="Luxor University" width="364" height="138" loading="lazy" decoding="async">
     </div>
 
     <span class="edu-year">2020 — 2024</span>
@@ -1640,7 +1624,7 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
 
   <article class="edu-card reveal">
     <div class="edu-icon-box ">
-      <img src="assets/images/iti.jpg" alt="ITI">
+      <img src="assets/images/iti.jpg" alt="ITI" width="900" height="506" loading="lazy" decoding="async">
     </div>
 
     <span class="edu-year edu-year-alt">Aug 2023 — Sep 2023</span>
@@ -1681,35 +1665,35 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
 
     <div class="cert-grid" data-stagger>
       <a href="https://www.coursera.org/account/accomplishments/verify/DLH2GJR2LCTN" target="_blank" rel="noopener" class="cert-badge">
-        <img src="https://img.icons8.com/?size=100&amp;id=PvvcWRWxRKSR&amp;format=png&amp;color=000000" alt="" loading="lazy" width="40" height="40">
+        <img src="assets/images/meta.png" alt="" loading="lazy" width="40" height="40">
         <span>Front-End Dev</span>
       </a>
       <a href="https://www.sololearn.com/en/certificates/CC-OM4QPIDY" target="_blank" rel="noopener" class="cert-badge">
-        <img src="assets/images/Sololearn.png" alt="" loading="lazy" width="40" height="40" onerror="this.style.display='none'">
+        <img src="assets/images/Sololearn.png" alt="" loading="lazy" width="40" height="40">
         <span>PHP — SoloLearn</span>
       </a>
       <a href="https://www.udemy.com/certificate/UC-c563a589-f1a0-458f-8622-120f0c57e2f5/" target="_blank" rel="noopener" class="cert-badge">
-        <img src="assets/images/udemy.jpg" alt="" loading="lazy" width="40" height="40" onerror="this.style.display='none'">
+        <img src="assets/images/udemy.jpg" alt="" loading="lazy" width="40" height="40">
         <span>PHP Laravel 2023</span>
       </a>
       <a href="https://www.coursera.org/account/accomplishments/specialization/BMYUW2THMELB" target="_blank" rel="noopener" class="cert-badge">
-        <img src="assets/images/infoec.jpeg" alt="" loading="lazy" width="40" height="40" onerror="this.style.display='none'">
+        <img src="assets/images/infoec.jpeg" alt="" loading="lazy" width="40" height="40">
         <span>Laravel · Coursera</span>
       </a>
       <a href="https://www.linkedin.com/posts/abdelwahab-adel-57265926b_backend-laravel-activity-7146469879976562688-Z3hY" target="_blank" rel="noopener" class="cert-badge">
-        <img src="assets/images/itrax_academy.png" alt="" loading="lazy" width="40" height="40" onerror="this.style.display='none'">
+        <img src="assets/images/itrax_academy.png" alt="" loading="lazy" width="40" height="40">
         <span>Laravel · Itrax</span>
       </a>
       <a href="https://www.coursera.org/account/accomplishments/verify/RUBQ6UT58CWV" target="_blank" rel="noopener" class="cert-badge">
-        <img src="https://img.icons8.com/?size=100&amp;id=31754&amp;format=png&amp;color=000000" alt="" loading="lazy" width="40" height="40">
+        <img src="assets/images/meta.png" alt="" loading="lazy" width="40" height="40">
         <span>RDBMS · Coursera</span>
       </a>
       <a href="https://www.coursera.org/account/accomplishments/verify/KFFP38EDGZFD" target="_blank" rel="noopener" class="cert-badge">
-        <img src="https://img.icons8.com/?size=100&amp;id=PvvcWRWxRKSR&amp;format=png&amp;color=000000" alt="" loading="lazy" width="40" height="40">
+        <img src="assets/images/ibm.png" alt="" loading="lazy" width="40" height="40">
         <span>MySQL</span>
       </a>
       <a href="https://data-flair.training/verify/7A6372E902-7A4B4024DA-73555FB68E/" target="_blank" rel="noopener" class="cert-badge">
-        <img src="assets/images/dataflair-frontend-badge.png" alt="" loading="lazy" width="40" height="40" onerror="this.style.display='none'">
+        <img src="assets/images/dataflair-frontend-badge.png" alt="" loading="lazy" width="40" height="40">
         <span>Front-End Track</span>
       </a>
     </div>
@@ -1908,35 +1892,39 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
             <div class="form-row">
               <div class="field">
                 <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required placeholder="John Doe" autocomplete="name">
+                <input type="text" id="name" name="name" required maxlength="80" aria-describedby="err-name" placeholder="John Doe" autocomplete="name">
                 <span class="error-msg" id="err-name" aria-live="polite"></span>
               </div>
               <div class="field">
                 <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+                <input type="email" id="email" name="email" required maxlength="120" aria-describedby="err-email" placeholder="you@example.com" autocomplete="email">
                 <span class="error-msg" id="err-email" aria-live="polite"></span>
               </div>
             </div>
             <div class="field">
               <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" required placeholder="Project Discussion">
+              <input type="text" id="subject" name="subject" required maxlength="120" aria-describedby="err-subject" placeholder="Project Discussion">
               <span class="error-msg" id="err-subject" aria-live="polite"></span>
             </div>
             <div class="field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+              <textarea id="message" name="message" rows="5" required maxlength="1000" aria-describedby="err-message" placeholder="Tell me about your project..."></textarea>
               <span class="error-msg" id="err-message" aria-live="polite"></span>
             </div>
             <button type="submit" id="submit-btn" class="btn btn-primary contact-submit">
               <span id="submit-text">Send via WhatsApp</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.87 9.87 0 01-1.511-5.26c.001-5.45 4.436-9.884 9.89-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.887 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.946L.057 24l6.305-1.654a11.875 11.875 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.479-8.413"/></svg>
             </button>
-            <p class="form-note">This opens WhatsApp with everything pre-filled — nothing leaves your browser.</p>
+            <p class="form-note">This opens WhatsApp with your message pre-filled. Nothing is sent until you press Send there, and this site stores nothing.</p>
             <div id="form-feedback" class="form-feedback" role="status" aria-live="polite" hidden></div>
           </form>
+          <noscript><p class="form-note">The contact form needs JavaScript. Email <a href="mailto:abdelwahabadel777@gmail.com">abdelwahabadel777@gmail.com</a> or message me on <a href="https://wa.me/201100340198">WhatsApp</a>.</p></noscript>
         </div>
       </div>
     </section>
+
+    </main>
+
 
     <!-- ════════════════ MEGA WORDMARK ════════════════ -->
 
@@ -1945,12 +1933,9 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
       <div class="container">
         <div class="footer-grid" data-stagger>
           <div class="footer-brand">
-            <a href="index.html#home" class="logo" aria-label="Abdelwahab Adel — home">
+            <a href="#home" class="logo" aria-label="Abdelwahab Adel — home">
     <span class="logo-mark">
-        <img 
-            src="assets/images/ChatGPT Image Sep 15, 2026, 07_36_10 PM.png" 
-            alt="Abdelwahab Adel Logo"
-        >
+        <img src="assets/images/logo.webp" alt="" width="220" height="98">
     </span>
 
     <span class="logo-text">
@@ -1962,7 +1947,7 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
           </div>
 
           <div class="footer-col">
-            <h4>NAVIGATE</h4>
+            <h2 class="footer-col-title">NAVIGATE</h2>
             <ul>
               <li><a href="#about">About</a></li>
               <li><a href="#services">Services</a></li>
@@ -1975,7 +1960,7 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
         
 
           <div class="footer-col">
-            <h4>CONNECT</h4>
+            <h2 class="footer-col-title">CONNECT</h2>
             <ul>
               <li><a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener">GitHub</a></li>
               <li><a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -1992,10 +1977,9 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
       </div>
     </footer>
 
-  </main>
 
-  <script src="assets/vendor/gsap.min.js"></script>
-  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

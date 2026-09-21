@@ -22,7 +22,10 @@
   <meta property="og:url" content="https://abdelwahab-adel.dev/projects.html">
   <meta property="og:title" content="Projects — Abdelwahab Adel">
   <meta property="og:description" content="49+ production systems across healthcare, education, e-commerce, real estate, corporate, and fintech.">
-  <meta property="og:image" content="https://abdelwahab-adel.dev/assets/images/profile-hero.jpg">
+  <meta property="og:image" content="https://abdelwahab-adel.dev/assets/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Abdelwahab Adel — Full-Stack Developer (PHP, Laravel, React)">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Abdelwahab Adel">
 
@@ -30,27 +33,24 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Projects — Abdelwahab Adel">
   <meta name="twitter:description" content="49+ production systems across healthcare, education, e-commerce, real estate, corporate, and fintech.">
-  <meta name="twitter:image" content="https://abdelwahab-adel.dev/assets/images/profile-hero.jpg">
+  <meta name="twitter:image" content="https://abdelwahab-adel.dev/assets/images/og-cover.jpg">
+  <meta name="twitter:image:alt" content="Abdelwahab Adel — Full-Stack Developer (PHP, Laravel, React)">
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <!-- Fonts (self-hosted, see @font-face in style.css) -->
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
+  <noscript><link rel="stylesheet" href="assets/noscript.css"></noscript>
 </head>
 <body>
 
   <!-- ════════════════ INTRO PRELOADER ════════════════ -->
-  <div id="preloader" class="preloader">
+  <div id="preloader" class="preloader" aria-hidden="true">
     <div class="preloader-inner">
       <span class="preloader-wordmark">ABDELWAHAB<em>·</em>ADEL</span>
       <span class="preloader-role mono">FULL-STACK DEVELOPER</span>
     </div>
-    <noscript><style>.preloader-wordmark,.preloader-role{opacity:1!important;transform:none!important;}</style></noscript>
   </div>
 
   <!-- Skip link -->
@@ -62,19 +62,14 @@
   <!-- Scroll progress -->
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-  <main id="main">
-
     <!-- ════════════════ NAVBAR ════════════════ -->
     <header class="nav" id="nav">
       <div class="nav-inner">
        
 
-           <a href="index.html#home"  class="logo" aria-label="Abdelwahab Adel — home">
+           <a href="index.html#home" class="logo" aria-label="Abdelwahab Adel — home">
     <span class="logo-mark">
-        <img 
-            src="assets/images/ChatGPT Image Sep 15, 2026, 07_36_10 PM.png" 
-            alt="Abdelwahab Adel Logo"
-        >
+        <img src="assets/images/logo.webp" alt="" width="220" height="98">
     </span>
 
     <span class="logo-text">
@@ -130,6 +125,8 @@
       </div>
     </nav>
 
+    <main id="main" tabindex="-1">
+
     <!-- ════════════════ PAGE HERO ════════════════ -->
     <section class="section projects-page-hero">
       <div class="container-wide">
@@ -157,28 +154,28 @@
         <div class="stats-grid" data-stagger>
           <div class="stat">
             <div class="stat-num-group">
-              <span class="stat-num" data-count="49">0</span>
+              <span class="stat-num" data-count="49">49</span>
               <span class="stat-suffix">+</span>
             </div>
             <span class="stat-label mono">PROJECTS DELIVERED</span>
           </div>
           <div class="stat">
             <div class="stat-num-group">
-              <span class="stat-num" data-count="19">0</span>
+              <span class="stat-num" data-count="19">19</span>
               <span class="stat-suffix">+</span>
             </div>
             <span class="stat-label mono">FEATURED CASE STUDIES</span>
           </div>
           <div class="stat">
             <div class="stat-num-group">
-              <span class="stat-num" data-count="3">0</span>
+              <span class="stat-num" data-count="3">3</span>
               <span class="stat-suffix">+</span>
             </div>
             <span class="stat-label mono">YEARS EXPERIENCE</span>
           </div>
           <div class="stat">
             <div class="stat-num-group">
-              <span class="stat-num" data-count="100">0</span>
+              <span class="stat-num" data-count="100">100</span>
               <span class="stat-suffix">%</span>
             </div>
             <span class="stat-label mono">CLIENT FOCUS</span>
@@ -190,6 +187,8 @@
     <!-- ════════════════ FILTER + GRID ════════════════ -->
     <section class="section section-alt projects-page-body">
       <div class="container-wide">
+        <h2 class="sr-only">All projects</h2>
+
 
         <div class="projects-filter reveal" id="projects-filter" role="group" aria-label="Filter projects by technology">
           <button class="filter-chip active" data-filter="all">All Projects</button>
@@ -209,7 +208,7 @@ Technologies Used: PHP, Laravel, MySQL, Blade.
 Challenge &amp; Success Story: Faculties needed one place to publish news, manage student records, and handle course content without juggling spreadsheets and paper forms. I designed a relational schema for students, courses and announcements, then built an admin dashboard with role-based access so staff could manage content without touching code. The result is a fast, maintainable portal that the faculty still uses to manage day-to-day academic operations.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/graduation-project.webp" alt="Luxor University Website — faculty portal with student management" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/graduation-project.webp" alt="Luxor University Website — faculty portal with student management" loading="lazy" width="1200" height="539"></div><button type="button" class="project-open" aria-label="View case study: Luxor University Website"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -219,7 +218,7 @@ Challenge &amp; Success Story: Faculties needed one place to publish news, manag
                 <span>PHP</span><span>Laravel</span><span>MySQL</span><span>Blade</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/abdelwahab-adel/Unvinersity-Website.git" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Unvinersity-Website" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                 <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
@@ -234,7 +233,7 @@ Technologies Used: Laravel 12, PHP, Eloquent, Blade, JavaScript, Vite, MySQL.
 Challenge &amp; Success Story: I transformed a static restaurant website into a dynamic Laravel application with an admin dashboard for managing menus, orders, reservations, offers, branches, and restaurant tables. The system also includes authentication, QR Menu, image management, and structured database relationships, providing a scalable solution for managing the restaurant's digital operations.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/la-casa-pizza-thumb.webp" alt="La Casa Pizza — authentic Italian restaurant website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/la-casa-pizza-thumb.webp" alt="La Casa Pizza — authentic Italian restaurant website" loading="lazy" width="1200" height="580"></div><button type="button" class="project-open" aria-label="View case study: La Casa Pizza"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -245,7 +244,7 @@ Challenge &amp; Success Story: I transformed a static restaurant website into a 
               </div>
               <div class="project-links">
                 <a href="https://casa-pizza.great-site.net/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/La-Casa-Pizza-Restaurant-Management-System" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -259,7 +258,7 @@ Technologies Used: PHP, Laravel, MySQL, Role-Based Access Control.
 Challenge &amp; Success Story: Clinics needed a single system to manage patient records, doctor schedules, and appointment booking while keeping sensitive medical data properly access-controlled. I engineered a role-based system separating admin, doctor, and reception permissions, with an appointments engine that prevents double-booking and a reporting layer for basic analytics — turning a paper-based process into a reliable digital workflow.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/hospital-management-thumb.webp" alt="Hospital Management System — patient records and appointments" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/hospital-management-thumb.webp" alt="Hospital Management System — patient records and appointments" loading="lazy" width="1200" height="611"></div><button type="button" class="project-open" aria-label="View case study: Hospital Management System"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -269,7 +268,7 @@ Challenge &amp; Success Story: Clinics needed a single system to manage patient 
                 <span>PHP</span><span>Laravel</span><span>MySQL</span><span>RBAC</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/abdelwahab-adel/Hospital-Management-System.git" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Hospital-Management-System" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                 <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
@@ -284,7 +283,7 @@ Technologies Used: HTML5, CSS3, JavaScript.
 Challenge &amp; Success Story: Mocha needed more than a menu page — they wanted an order-ahead experience with a shopping cart and a brand story that stood out from generic cafe sites. I built an interactive order-ahead menu, a responsive cart drawer, and a scroll-based brand timeline, giving the cafe a digital presence that matches its specialty-coffee positioning.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/mocha-coffee-thumb.webp" alt="Mocha Coffee Cup Roasters — specialty coffee cafe website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/mocha-coffee-thumb.webp" alt="Mocha Coffee Cup Roasters — specialty coffee cafe website" loading="lazy" width="1200" height="560"></div><button type="button" class="project-open" aria-label="View case study: Mocha Coffee"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -295,7 +294,7 @@ Challenge &amp; Success Story: Mocha needed more than a menu page — they wante
               </div>
               <div class="project-links">
                 <a href="https://mocha-coffee-cup.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Mocha-Coffee-Cup" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -309,10 +308,10 @@ Technologies Used: React.js, JavaScript, Responsive Design.
 Challenge &amp; Success Story: Anttikka needed an online store that matched the premium feel of its furniture collections — solid wood, natural marble, and hotel-quality pieces — and supported Egyptian shoppers with installment plans up to 36 months. I built a curated catalog with collection-based browsing (Modulix, Vendra, Domira, Kavon), category-driven navigation, and a clear product-to-checkout path, giving the brand a digital flagship that matches its in-store experience.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/ant.webp" alt="Anttikka — premium Egyptian furniture e-commerce store" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/ant.webp" alt="Anttikka — premium Egyptian furniture e-commerce store" loading="lazy" width="1200" height="547"></div><button type="button" class="project-open" aria-label="View case study: Anttikka"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
-              <span class="project-tag-pill"><span class="filter-dot"></span>react</span>
+              <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
               <h3>Anttikka</h3>
               <p>High-end Egyptian e-commerce store for luxury furniture and home décor — curated collections, category-driven browsing, and a fully responsive shopping experience.</p>
               <div class="project-stack">
@@ -320,7 +319,7 @@ Challenge &amp; Success Story: Anttikka needed an online store that matched the 
               </div>
               <div class="project-links">
                 <a href="https://anttikka-eg.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Anttikka_Eg" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -334,7 +333,7 @@ Technologies Used: HTML, CSS, JavaScript, Responsive Design.
 Challenge &amp; Success Story: The brief was a fashion storefront built around discovery and conversion rather than a plain product list. I structured category shopping, daily deals, seasonal collections, sportswear, and featured brands into one cohesive browsing flow, then layered in new arrivals, testimonials, and newsletter capture to keep visitors engaged and coming back.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/zay-fashion-thumb.webp" alt="Zay Fashion E-commerce — fashion storefront and product discovery" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/zay-fashion-thumb.webp" alt="Zay Fashion E-commerce — fashion storefront and product discovery" loading="lazy" width="1200" height="569"></div><button type="button" class="project-open" aria-label="View case study: Zay Fashion E-commerce"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -345,7 +344,7 @@ Challenge &amp; Success Story: The brief was a fashion storefront built around d
               </div>
               <div class="project-links">
                 <a href="https://clothing-tau-seven.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Website <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Clothing" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -359,7 +358,7 @@ Technologies Used: HTML5, CSS3, JavaScript.
 Challenge &amp; Success Story: The clinic wanted patients to book consultations online while still showcasing the clinicians and case results with a premium, trustworthy feel. I implemented an online consultation booking form, an interactive clinician timeline, and responsive case portfolios, resulting in a portal that builds trust before a patient ever visits in person.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/smile-clinic-thumb.webp" alt="Smile Clinic — aesthetic dentistry and booking portal" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/smile-clinic-thumb.webp" alt="Smile Clinic — aesthetic dentistry and booking portal" loading="lazy" width="1200" height="545"></div><button type="button" class="project-open" aria-label="View case study: Smile Clinic"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -370,7 +369,7 @@ Challenge &amp; Success Story: The clinic wanted patients to book consultations 
               </div>
               <div class="project-links">
                 <a href="https://smile-clinic-sage.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Smile-Clinic" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -384,7 +383,7 @@ Technologies Used: HTML5, CSS3, JavaScript.
 Challenge &amp; Success Story: The brief was to present Aswan's history and tourism appeal to a global audience in a way that felt visual rather than encyclopedic. I structured the content into scroll-driven sections with rich imagery and lightweight animations, keeping load times low while still delivering an immersive cultural narrative.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/asswan.webp" alt="Asswan Culture — heritage showcase" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/asswan.webp" alt="Asswan Culture — heritage showcase" loading="lazy" width="1200" height="545"></div><button type="button" class="project-open" aria-label="View case study: Asswan Culture"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -395,7 +394,7 @@ Challenge &amp; Success Story: The brief was to present Aswan's history and tour
               </div>
               <div class="project-links">
                 <a href="https://ambassa.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/ambassa" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -409,7 +408,7 @@ Technologies Used: PHP, Laravel, MySQL, Payment Gateway Integration.
 Challenge &amp; Success Story: The goal was a store that could handle a full retail workflow — catalogue, cart, checkout, and order tracking — while giving the store owner a simple dashboard to manage stock and orders without developer help. I built a normalized product/order schema, a secure checkout flow, and an admin panel with real-time order status updates, resulting in a store that's genuinely usable by non-technical staff.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/ecommerce-websit.webp" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/ecommerce-websit.webp" alt="E-Commerce Platform — full shop with admin panel" loading="lazy" width="1200" height="656"></div><button type="button" class="project-open" aria-label="View case study: E-Commerce Platform"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Laravel</span>
@@ -434,7 +433,7 @@ Technologies Used: HTML, CSS, JavaScript, Responsive Design.
 Challenge &amp; Success Story: The brief was to document and preserve Nubian heritage — history, arts, language, music, traditions, cuisine, tourism, and notable historical figures — in a single accessible digital space. I built an interactive bilingual experience structured around these themes, giving visitors an engaging way to explore Nubian culture rather than reading through a static archive.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/nubian-project.webp" alt="Nubian Cultural Heritage Website — interactive Nubian history and culture experience" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/nubian-project.webp" alt="Nubian Cultural Heritage Website — interactive Nubian history and culture experience" loading="lazy" width="1200" height="575"></div><button type="button" class="project-open" aria-label="View case study: Nubian Cultural Heritage Website"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -445,7 +444,7 @@ Challenge &amp; Success Story: The brief was to document and preserve Nubian her
               </div>
               <div class="project-links">
                 <a href="https://nubian-as.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Website <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/nubian" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -459,7 +458,7 @@ Technologies Used: React.js, JavaScript, REST API Integration.
 Challenge &amp; Success Story: Athar needed a website that reflected the scale of managing Saudi Arabia's large national events — not just a brochure site, but something cinematic and data-driven. I built cinematic hero sliders, an interactive coverage map for past events, and API-driven content sections, delivering a site that communicates credibility and scale at a glance.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/aimtia-athar-thumb.webp" alt="AIMTIA (Athar) — Saudi national events strategic partner website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/aimtia-athar-thumb.webp" alt="AIMTIA (Athar) — Saudi national events strategic partner website" loading="lazy" width="1200" height="568"></div><button type="button" class="project-open" aria-label="View case study: AIMTIA (Athar)"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -470,7 +469,7 @@ Challenge &amp; Success Story: Athar needed a website that reflected the scale o
               </div>
               <div class="project-links">
                 <a href="https://aimtia-sa.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/AIMTIA__SA" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -484,7 +483,7 @@ Technologies Used: React.js, JavaScript, Responsive Design, RTL.
 Challenge &amp; Success Story: A leading Saudi law firm with 20+ years of experience needed a website that communicated credibility and scale, with detailed service breakdowns across 15+ legal specializations — from commercial and real-estate law to international arbitration. I built a premium RTL-aware site with structured service showcases, attorney profiles, and a contact flow tuned for high-intent legal inquiries, turning a static brochure into a working lead-generation channel.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/lax.webp" alt="Lexora (Rawad Al-Qanoon) — premium Saudi law firm website" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/lax.webp" alt="Lexora (Rawad Al-Qanoon) — premium Saudi law firm website" loading="lazy" width="1200" height="543"></div><button type="button" class="project-open" aria-label="View case study: Lexora (Rawad Al-Qanoon)"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -495,7 +494,7 @@ Challenge &amp; Success Story: A leading Saudi law firm with 20+ years of experi
               </div>
               <div class="project-links">
                 <a href="https://lexora-rho-rust.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Lexora" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -509,7 +508,7 @@ Technologies Used: HTML5, CSS3, JavaScript ES6+, No Framework.
 Challenge &amp; Success Story: The goal was a file-tools platform — merging, splitting, and converting PDFs, compressing images, finding duplicate files, and organizing files — without leaning on any framework or build step. I built the entire tool suite in vanilla HTML5, CSS3, and modern ES6+ JavaScript, proving out a fast, dependency-free workflow that runs entirely in the browser.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/filehub-thumb.webp" alt="FileHub — File Tools SaaS — browser-based PDF and file utilities" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/filehub-thumb.webp" alt="FileHub — File Tools SaaS — browser-based PDF and file utilities" loading="lazy" width="1200" height="540"></div><button type="button" class="project-open" aria-label="View case study: FileHub — File Tools SaaS"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -519,7 +518,7 @@ Challenge &amp; Success Story: The goal was a file-tools platform — merging, s
                 <span>HTML5</span><span>CSS3</span><span>JavaScript ES6+</span><span>No Framework</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/abdelwahab-adel/filehubA" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/filehub" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
                 <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
@@ -534,7 +533,7 @@ Technologies Used: React.js, JavaScript, REST API.
 Challenge &amp; Success Story: The client wanted a landing page that felt as premium as the compound itself, with property showcases that convert visitors into leads. I implemented a glassmorphism UI with interactive unit galleries and a fully responsive layout, giving the sales team a page that performs well on both desktop presentations and mobile browsing.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/orouba-square-thumb.webp" alt="Orouba Square — luxury real estate compound landing page" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/orouba-square-thumb.webp" alt="Orouba Square — luxury real estate compound landing page" loading="lazy" width="1200" height="572"></div><button type="button" class="project-open" aria-label="View case study: Orouba Square"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -545,7 +544,7 @@ Challenge &amp; Success Story: The client wanted a landing page that felt as pre
               </div>
               <div class="project-links">
                 <a href="https://orouba-square.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/OROUBA-SQUARE" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -559,7 +558,7 @@ Technologies Used: React.js, REST API, YouTube API.
 Challenge &amp; Success Story: The goal was to make a large body of historical content approachable, mixing text, video, and audio into one coherent experience. I built a responsive historical timeline, a YouTube-synced playlist with live search, and live radio broadcasting nodes, turning a dense historical archive into an engaging, navigable platform.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/el-sirah-thumb.webp" alt="El Sirah — Prophet's biography interactive platform" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/el-sirah-thumb.webp" alt="El Sirah — Prophet's biography interactive platform" loading="lazy" width="1200" height="534"></div><button type="button" class="project-open" aria-label="View case study: El Sirah Platform"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
@@ -570,7 +569,7 @@ Challenge &amp; Success Story: The goal was to make a large body of historical c
               </div>
               <div class="project-links">
                 <a href="https://el-sirah.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/el__sirah" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -584,7 +583,7 @@ Technologies Used: JavaScript, REST API.
 Challenge &amp; Success Story: Readers needed a fast way to browse surahs and ayahs with synchronized audio recitation and instant search. I integrated a public Quran API with a lightweight audio player and live search-as-you-type, resulting in a snappy reading and listening experience with no page reloads.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/quran.webp" alt="Quran Website — surahs and audio recitation" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/quran.webp" alt="Quran Website — surahs and audio recitation" loading="lazy" width="1200" height="558"></div><button type="button" class="project-open" aria-label="View case study: Quran Website"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -595,7 +594,7 @@ Challenge &amp; Success Story: Readers needed a fast way to browse surahs and ay
               </div>
               <div class="project-links">
                 <a href="https://quran-website-drab.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/quran-website" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -609,7 +608,7 @@ Technologies Used: React.js, REST API, JavaScript.
 Challenge &amp; Success Story: KATO needed a platform for booking electrical, plumbing, and AC services in both Arabic and English without confusing either audience. I built a fully bilingual interface with RTL-aware layouts and a service-request flow, giving customers a clear path from browsing services to requesting a technician.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/kato-thumb.webp" alt="KATO — integrated service center for home maintenance" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/kato-thumb.webp" alt="KATO — integrated service center for home maintenance" loading="lazy" width="1200" height="581"></div><button type="button" class="project-open" aria-label="View case study: KATO — Integrated Service Center"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
@@ -620,7 +619,7 @@ Challenge &amp; Success Story: KATO needed a platform for booking electrical, pl
               </div>
               <div class="project-links">
                 <a href="https://kato-integrated-services-center.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/KATO-Integrated-Services-Center" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -634,7 +633,7 @@ Technologies Used: React.js, REST API, AI-Powered Analysis.
 Challenge &amp; Success Story: Traders needed live, reliable gold, bullion, and currency prices along with some intelligence layered on top rather than raw numbers alone. I integrated real-time market data feeds with an AI-powered analysis module surfacing trend insights, delivering a dashboard that traders can act on rather than just observe.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/egypt-golden-platform-thumb.webp" alt="Egypt Golden Platform — live gold and currency prices" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/egypt-golden-platform-thumb.webp" alt="Egypt Golden Platform — live gold and currency prices" loading="lazy" width="1200" height="548"></div><button type="button" class="project-open" aria-label="View case study: Egypt Golden Platform"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>React</span>
@@ -645,7 +644,7 @@ Challenge &amp; Success Story: Traders needed live, reliable gold, bullion, and 
               </div>
               <div class="project-links">
                 <a href="https://egypt-golden-platform.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Egypt-Golden-Platform" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -659,7 +658,7 @@ Technologies Used: HTML5, CSS3, JavaScript, WhatsApp API.
 Challenge &amp; Success Story: The store needed to reach Saudi shoppers who prefer completing purchases over WhatsApp rather than a full checkout form. I built categorised product browsing paired with a WhatsApp-based checkout flow, giving the client a lightweight store that matches how their customers actually like to buy.">
             <span class="project-card-glow"></span>
             <div class="project-device">
-              <img src="assets/images/al-rayyan-store-thumb.webp" alt="Al Rayyan Store — Saudi e-commerce" loading="lazy" onerror="this.style.display='none'"></div><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
+              <img src="assets/images/al-rayyan-store-thumb.webp" alt="Al Rayyan Store — Saudi e-commerce" loading="lazy" width="1200" height="555"></div><button type="button" class="project-open" aria-label="View case study: Al Rayyan Store"></button><span class="project-view-hint" aria-hidden="true"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>View Case Study</span></span>
             <div class="project-card-content">
               <div class="project-brand"><span class="project-brand-mark">A</span> ABDELWAHAB · ADEL</div>
               <span class="project-tag-pill"><span class="filter-dot"></span>Front-End</span>
@@ -670,7 +669,7 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
               </div>
               <div class="project-links">
                 <a href="https://al-rayyan-d9jz.vercel.app/" target="_blank" rel="noopener" class="project-link">Live Demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
-                <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="project-link">GitHub Profile <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+                <a href="https://github.com/abdelwahab-adel/Al-Rayyan" target="_blank" rel="noopener" class="project-link">Repository <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
               </div>
             </div>
           </article>
@@ -678,13 +677,13 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
         </div>
 
         <p class="projects-controls-text projects-empty-msg" id="projects-empty-msg" hidden>
-          No featured case study in this category yet — the full build is on <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" style="color: var(--text-hi); font-weight: 500;">GitHub</a>.
+          No featured case study in this category yet — the full build is on <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" class="projects-controls-link">GitHub</a>.
         </p>
 
         <!-- More-on-GitHub CTA panel -->
         <div class="more-panel reveal">
           <div class="more-panel-text">
-            <span class="project-tag-pill" style="margin-bottom: 14px;">The Rest of the Story</span>
+            <span class="project-tag-pill project-tag-pill--spaced">The Rest of the Story</span>
             <h3>Every other build lives on GitHub.</h3>
             <p>Smaller tools, experiments, and client work that didn't make the featured nineteen — browse the full commit history and source code.</p>
           </div>
@@ -718,6 +717,9 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
       </div>
     </section>
 
+    </main>
+
+
     <!-- ════════════════ FOOTER ════════════════ -->
     <footer class="footer">
       <div class="container">
@@ -725,10 +727,7 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
           <div class="footer-brand">
                    <a href="index.html#home" class="logo" aria-label="Abdelwahab Adel — home">
     <span class="logo-mark">
-        <img 
-            src="assets/images/ChatGPT Image Sep 15, 2026, 07_36_10 PM.png" 
-            alt="Abdelwahab Adel Logo"
-        >
+        <img src="assets/images/logo.webp" alt="" width="220" height="98">
     </span>
 
     <span class="logo-text">
@@ -740,7 +739,7 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
           </div>
 
           <div class="footer-col">
-            <h4>NAVIGATE</h4>
+            <h2 class="footer-col-title">NAVIGATE</h2>
             <ul>
               <li><a href="index.html#about">About</a></li>
               <li><a href="index.html#services">Services</a></li>
@@ -753,7 +752,7 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
          
 
           <div class="footer-col">
-            <h4>CONNECT</h4>
+            <h2 class="footer-col-title">CONNECT</h2>
             <ul>
               <li><a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener">GitHub</a></li>
               <li><a href="https://www.linkedin.com/in/abdelwahab-adel-57265926b" target="_blank" rel="noopener">LinkedIn</a></li>
@@ -770,54 +769,9 @@ Challenge &amp; Success Story: The store needed to reach Saudi shoppers who pref
       </div>
     </footer>
 
-  </main>
 
-  <script src="assets/vendor/gsap.min.js"></script>
-  <script src="assets/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
-  <script defer>
-    // Page-specific: simple filter for the full projects grid (no marquee/pin here).
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBar = document.getElementById('projects-filter');
-      const grid = document.getElementById('projects-full-grid');
-      const emptyMsg = document.getElementById('projects-empty-msg');
-      if (!filterBar || !grid) return;
-
-      const cards = Array.from(grid.querySelectorAll('.project-card'));
-      const chips = Array.from(filterBar.querySelectorAll('.filter-chip'));
-      const HIDE_MS = 380;
-
-      const setVisible = (el, show) => {
-        if (show) {
-          el.style.display = '';
-          void el.offsetWidth;
-          requestAnimationFrame(() => el.classList.remove('hide'));
-        } else {
-          el.classList.add('hide');
-          window.setTimeout(() => {
-            if (el.classList.contains('hide')) el.style.display = 'none';
-          }, HIDE_MS);
-        }
-      };
-
-      chips.forEach((chip) => {
-        chip.addEventListener('click', () => {
-          if (chip.classList.contains('active')) return;
-          chips.forEach((c) => c.classList.remove('active'));
-          chip.classList.add('active');
-          const filter = chip.dataset.filter;
-          const isAll = filter === 'all';
-          let visible = 0;
-          cards.forEach((card) => {
-            const match = isAll || card.dataset.category === filter;
-            setVisible(card, match);
-            if (match) visible++;
-          });
-          if (emptyMsg) emptyMsg.hidden = visible !== 0;
-          if (window.ScrollTrigger) window.setTimeout(() => ScrollTrigger.refresh(), HIDE_MS + 60);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

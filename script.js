@@ -32,7 +32,7 @@
       try {
         const entries = performance.getEntriesByType('navigation');
         if (entries && entries.length) return entries[0].type;
-      } catch (e) {}
+      } catch (e) { /* Navigation Timing unavailable — fall through */ }
       if (performance.navigation) {
         if (performance.navigation.type === 1) return 'reload';
         if (performance.navigation.type === 2) return 'back_forward';
@@ -41,17 +41,18 @@
     }
 
     let isFirstVisitThisSession = true;
-    try { isFirstVisitThisSession = !sessionStorage.getItem('pw-visited'); } catch (e) {}
+    try { isFirstVisitThisSession = !sessionStorage.getItem('pw-visited'); } catch (e) { /* storage blocked — treat as first visit */ }
 
     if (getNavigationType() !== 'reload' && !isFirstVisitThisSession) {
       preloader.remove();
       return;
     }
 
-    try { sessionStorage.setItem('pw-visited', '1'); } catch (e) {}
+    try { sessionStorage.setItem('pw-visited', '1'); } catch (e) { /* storage blocked — intro simply replays */ }
 
     const wordmarkEl = preloader.querySelector('.preloader-wordmark');
     const roleEl = preloader.querySelector('.preloader-role');
+    if (!wordmarkEl || !roleEl) { preloader.remove(); return; }
     document.body.classList.add('is-preloading');
 
     function exit() {
@@ -59,6 +60,7 @@
       document.body.classList.remove('is-preloading');
       window.setTimeout(() => preloader.remove(), 650);
     }
+    window.setTimeout(exit, 6000); // hard failsafe — never trap the page behind the intro
 
     if (reduceMotion) {
       wordmarkEl.classList.add('is-static');
@@ -89,14 +91,24 @@
     function walk(node) {
       if (node.nodeType === Node.TEXT_NODE) {
         const frag = document.createDocumentFragment();
+        // Letters are grouped into nowrap "words": separate inline-block letters may otherwise
+        // wrap in the middle of a word on narrow screens ("Abdelwa / hab").
+        let word = null;
         for (const ch of node.textContent) {
           if (/\s/.test(ch)) {
+            word = null;
             frag.appendChild(document.createTextNode(ch));
           } else {
+            if (!word) {
+              word = document.createElement('span');
+              word.className = 'char-word';
+              frag.appendChild(word);
+            }
             const span = document.createElement('span');
             span.className = 'char';
+            span.setAttribute('aria-hidden', 'true');
             span.textContent = ch;
-            frag.appendChild(span);
+            word.appendChild(span);
             chars.push(span);
           }
         }
@@ -144,6 +156,18 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ─────────────────────────────────────────────────
+     Broken images are hidden (this used to be an inline
+     onerror="" attribute, which a strict CSP forbids).
+     ───────────────────────────────────────────────── */
+  document.querySelectorAll('img').forEach((img) => {
+    const hide = () => { img.style.display = 'none'; };
+    if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) hide();
+    else img.addEventListener('error', hide, { once: true });
+  });
+
+  const syncChips = (chips) => chips.forEach((c) => c.setAttribute('aria-pressed', c.classList.contains('active') ? 'true' : 'false'));
+
+  /* ─────────────────────────────────────────────────
      Navbar scroll state + scroll progress
      ───────────────────────────────────────────────── */
   const nav = document.getElementById('nav');
@@ -188,13 +212,16 @@
     menuBtn.classList.remove('active');
     mobileNav.classList.remove('open');
     menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Open menu');
     document.body.style.overflow = '';
   };
   const openMenu = () => {
     menuBtn.classList.add('active');
     mobileNav.classList.add('open');
     menuBtn.setAttribute('aria-expanded', 'true');
+    menuBtn.setAttribute('aria-label', 'Close menu');
     document.body.style.overflow = 'hidden';
+    if (mobileLinks[0]) mobileLinks[0].focus({ preventScroll: true });
   };
   if (menuBtn) {
     menuBtn.addEventListener('click', () => {
@@ -203,7 +230,14 @@
     });
     mobileLinks.forEach((l) => l.addEventListener('click', closeMenu));
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMenu();
+      if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
+        closeMenu();
+        menuBtn.focus();
+      }
+    });
+    // The drawer is only meant for narrow screens — don't leave it (and the scroll lock) open after a resize.
+    window.matchMedia('(min-width: 1101px)').addEventListener('change', (e) => {
+      if (e.matches && mobileNav.classList.contains('open')) closeMenu();
     });
   }
 
@@ -211,6 +245,8 @@
      HERO — letter-by-letter cinematic entrance
      ───────────────────────────────────────────────── */
   const heroTitle = document.querySelector('.hero-title-v2');
+  const typingFallback = document.getElementById('typing-text');
+  if (typingFallback) typingFallback.textContent = ''; // static fallback text is for no-JS only; the typewriter refills it
   if (heroTitle) {
     if (hasGSAP && !reduceMotion) {
       const chars = splitChars(heroTitle);
@@ -305,6 +341,8 @@
      Number counters
      ───────────────────────────────────────────────── */
   const counters = document.querySelectorAll('[data-count]');
+  // HTML holds the final numbers (no-JS / reduced motion); when animating we count up from 0.
+  if (!reduceMotion) counters.forEach((c) => { c.textContent = '0'; });
   const animateCount = (el) => {
     const target = parseInt(el.dataset.count, 10);
     const duration = 900;
@@ -329,7 +367,7 @@
     },
     { threshold: 0.4 }
   );
-  counters.forEach((c) => counterObserver.observe(c));
+  if (!reduceMotion) counters.forEach((c) => counterObserver.observe(c));
 
   /* ─────────────────────────────────────────────────
      Skill progress bars — fill on scroll into view
@@ -369,6 +407,7 @@
     const originalCards = Array.from(track.querySelectorAll('.project-card'));
     const originalMore = track.querySelector('.project-more-tile');
     const chips = Array.from(filterBar.querySelectorAll('.filter-chip'));
+    syncChips(chips);
     let horizontalST = null;
 
     const setTileVisible = (el, show) => {
@@ -411,6 +450,27 @@
       });
     };
 
+    const renderCount = (isAll, visible, filter) => {
+      if (!countText) return;
+      countText.textContent = '';
+      const add = (t) => countText.appendChild(document.createTextNode(t));
+      const strong = (t) => { const el = document.createElement('strong'); el.textContent = t; countText.appendChild(el); };
+      if (isAll) {
+        add('Showing '); strong(String(originalCards.length)); add(' of '); strong('49+'); add(' projects · ');
+      } else {
+        const activeChip = filterBar.querySelector('[data-filter="' + filter + '"]');
+        const label = activeChip ? activeChip.textContent.trim() : filter;
+        add('Showing '); strong(String(visible)); add(' ' + label + ' project' + (visible === 1 ? '' : 's') + ' · ');
+      }
+      const a = document.createElement('a');
+      a.href = 'https://github.com/abdelwahab-adel/';
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.className = 'projects-controls-link';
+      a.textContent = 'View all on GitHub →';
+      countText.appendChild(a);
+    };
+
     const applyFilter = (filter) => {
       const isAll = filter === 'all';
       track.classList.toggle('is-static', !isAll);
@@ -424,15 +484,7 @@
       });
       if (originalMore) setTileVisible(originalMore, isAll);
 
-      if (countText) {
-        if (isAll) {
-          countText.innerHTML = 'Showing <strong>' + originalCards.length + '</strong> of <strong>49+</strong> projects · <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" style="color: var(--text-hi); font-weight: 500;">View all on GitHub →</a>';
-        } else {
-          const activeChip = filterBar.querySelector('[data-filter="' + filter + '"]');
-          const label = activeChip ? activeChip.textContent.trim() : filter;
-          countText.innerHTML = 'Showing <strong>' + visible + '</strong> ' + label + ' project' + (visible === 1 ? '' : 's') + ' · <a href="https://github.com/abdelwahab-adel/" target="_blank" rel="noopener" style="color: var(--text-hi); font-weight: 500;">View all on GitHub →</a>';
-        }
-      }
+      renderCount(isAll, visible, filter);
 
       if (isAll) {
         window.setTimeout(() => {
@@ -447,8 +499,22 @@
         if (chip.classList.contains('active')) return;
         chips.forEach((c) => c.classList.remove('active'));
         chip.classList.add('active');
+        syncChips(chips);
         applyFilter(chip.dataset.filter);
       });
+    });
+
+    // Keyboard: focusing an off-screen card must bring it into view. While the strip is pinned the
+    // browser can only nudge the (overflow:hidden) container, so translate that into page scroll.
+    track.addEventListener('focusin', (e) => {
+      if (!horizontalST) return;
+      const item = e.target.closest('.project-card, .project-more-tile');
+      if (!item) return;
+      marquee.scrollLeft = 0; // undo the browser's own focus-scroll; the GSAP transform does the moving
+      const distance = track.scrollWidth - marquee.clientWidth;
+      const offset = item.getBoundingClientRect().left - track.getBoundingClientRect().left - 32;
+      const progress = Math.min(1, Math.max(0, offset / distance));
+      window.scrollTo({ top: horizontalST.start + progress * (horizontalST.end - horizontalST.start), behavior: 'auto' });
     });
 
     setupHorizontalScroll();
@@ -462,6 +528,52 @@
       }, 250);
     });
   }
+
+  /* ─────────────────────────────────────────────────
+     Projects page — filter for the full grid (no pinned strip here).
+     Was an inline <script>, which a strict CSP forbids.
+     ───────────────────────────────────────────────── */
+  (() => {
+    const bar = document.getElementById('projects-filter');
+    const grid = document.getElementById('projects-full-grid');
+    const emptyMsg = document.getElementById('projects-empty-msg');
+    if (!bar || !grid) return;
+
+    const cards = Array.from(grid.querySelectorAll('.project-card'));
+    const chips = Array.from(bar.querySelectorAll('.filter-chip'));
+    syncChips(chips);
+
+    const setVisible = (el, show) => {
+      if (show) {
+        el.style.display = '';
+        void el.offsetWidth;
+        requestAnimationFrame(() => el.classList.remove('hide'));
+      } else {
+        el.classList.add('hide');
+        window.setTimeout(() => {
+          if (el.classList.contains('hide')) el.style.display = 'none';
+        }, HIDE_MS);
+      }
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        if (chip.classList.contains('active')) return;
+        chips.forEach((c) => c.classList.remove('active'));
+        chip.classList.add('active');
+        syncChips(chips);
+        const filter = chip.dataset.filter;
+        let visible = 0;
+        cards.forEach((card) => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          setVisible(card, match);
+          if (match) visible++;
+        });
+        if (emptyMsg) emptyMsg.hidden = visible !== 0;
+        if (hasGSAP) window.setTimeout(() => ScrollTrigger.refresh(), HIDE_MS + 60);
+      });
+    });
+  })();
 
   /* ─────────────────────────────────────────────────
      Project card tilt (fine pointers only)
@@ -552,16 +664,22 @@
       const descEl = card.querySelector('.project-card-content > p');
       pmDesc.textContent = descEl ? descEl.textContent.trim() : '';
 
-      pmActions.innerHTML = '';
+      pmActions.textContent = '';
       Array.from(card.querySelectorAll('.project-links a')).forEach((link, i) => {
-        const label = link.textContent.trim();
-        const isGithub = /github\.com/.test(link.href) && /profile/i.test(label);
+        let url;
+        try { url = new URL(link.href); } catch (err) { return; }
+        if (url.protocol !== 'https:' && url.protocol !== 'http:') return;
+        const isGithub = url.hostname === 'github.com';
+        const isRepo = isGithub && url.pathname.split('/').filter(Boolean).length >= 2;
         const a = document.createElement('a');
-        a.href = link.href;
+        a.href = url.href;
         a.target = '_blank';
         a.rel = 'noopener';
         a.className = 'pm-btn ' + (i === 0 ? 'pm-btn-primary' : 'pm-btn-ghost');
-        a.innerHTML = (isGithub ? GITHUB_ICON : EXTERNAL_ICON) + '<span>' + (isGithub ? 'View Code' : label) + '</span>';
+        a.insertAdjacentHTML('afterbegin', isGithub ? GITHUB_ICON : EXTERNAL_ICON); // trusted constants
+        const text = document.createElement('span');
+        text.textContent = isRepo ? 'View Code' : link.textContent.trim();
+        a.appendChild(text);
         pmActions.appendChild(a);
       });
 
@@ -583,7 +701,17 @@
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.classList.add('pm-open');
-      closeBtn.focus();
+      // Root cause was `transition: all` on the close button (see style.css). Kept as a safety net: if the
+      // browser still refuses focus for a moment, poll briefly instead of relying on frame timing.
+      const focusClose = () => closeBtn.focus({ preventScroll: true });
+      focusClose();
+      if (document.activeElement !== closeBtn) {
+        let tries = 0;
+        const timer = window.setInterval(() => {
+          focusClose();
+          if (document.activeElement === closeBtn || ++tries > 20 || !overlay.classList.contains('open')) window.clearInterval(timer);
+        }, 30);
+      }
     }
 
     function closeModal() {
@@ -600,22 +728,23 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
     });
+    // aria-modal only *declares* a modal — keep keyboard focus inside it as well.
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !overlay.classList.contains('open')) return;
+      const f = Array.from(overlay.querySelectorAll('a[href], button:not([disabled])')).filter((el) => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0];
+      const last = f[f.length - 1];
+      if (!overlay.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
 
     cards.forEach((card) => {
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-haspopup', 'dialog');
-
-      card.addEventListener('click', (e) => {
-        if (e.target.closest('.project-links')) return; // let the card's own links work normally
-        openModal(card);
-      });
-      card.addEventListener('keydown', (e) => {
-        if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('.project-links')) {
-          e.preventDefault();
-          openModal(card);
-        }
-      });
+      const opener = card.querySelector('.project-open');
+      if (!opener) return;
+      opener.setAttribute('aria-haspopup', 'dialog');
+      opener.addEventListener('click', () => openModal(card));
     });
   })();
 
@@ -642,14 +771,16 @@
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href');
-      if (id.length > 1) {
-        const target = document.querySelector(id);
-        if (target) {
-          e.preventDefault();
-          const top = target.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }
+      if (id.length <= 1) return;
+      const target = document.getElementById(id.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      // Move keyboard focus with the view (skip link + nav links), and keep the URL in sync.
+      if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+      if (window.history && history.pushState) history.pushState(null, '', id);
     });
   });
 
@@ -810,17 +941,31 @@
     const dots = Array.from(document.querySelectorAll('.process-dots i'));
     if (!steps.length) return;
 
-    const setActiveStep = (i) => {
+    const setActiveStep = (i, focus) => {
       steps.forEach((s, idx) => {
         s.classList.toggle('is-active', idx === i);
         s.setAttribute('aria-selected', idx === i ? 'true' : 'false');
+        s.setAttribute('tabindex', idx === i ? '0' : '-1');
       });
-      frames.forEach((f, idx) => f.classList.toggle('is-active', idx === i));
+      frames.forEach((f, idx) => {
+        f.classList.toggle('is-active', idx === i);
+        f.setAttribute('aria-hidden', idx === i ? 'false' : 'true');
+        f.inert = idx !== i;
+      });
       dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+      if (focus) steps[i].focus();
     };
 
     steps.forEach((step, i) => {
       step.addEventListener('click', () => setActiveStep(i));
+      step.addEventListener('keydown', (e) => {
+        const move = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+        let next = null;
+        if (e.key in move) next = (i + move[e.key] + steps.length) % steps.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = steps.length - 1;
+        if (next !== null) { e.preventDefault(); setActiveStep(next, true); }
+      });
     });
   })();
 
@@ -873,8 +1018,7 @@
       const rgba = (a) => `rgba(${RGB}, ${a.toFixed(3)})`;
       const half = Math.floor(DOT_SIZE / 2);
 
-      const reduceMotion =
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // (reduceMotion is inherited from the outer scope)
 
       canvases.forEach((canvas) => {
         const ctx = canvas.getContext('2d');
@@ -1059,10 +1203,19 @@
       });
     });
 
-    function showFeedback(type, message) {
+    function showFeedback(type, message, link) {
       feedback.hidden = false;
       feedback.textContent = message;
       feedback.className = 'form-feedback ' + type;
+      if (link) {
+        feedback.appendChild(document.createTextNode(' '));
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.textContent = 'Open WhatsApp';
+        feedback.appendChild(a);
+      }
     }
 
     form.addEventListener('submit', (e) => {
@@ -1074,9 +1227,10 @@
         return;
       }
 
-      const name    = fields.name.input.value.trim();
-      const email   = fields.email.input.value.trim();
-      const subject = fields.subject.input.value.trim();
+      const oneLine = (v) => v.replace(/\s+/g, ' ').trim();
+      const name    = oneLine(fields.name.input.value);
+      const email   = oneLine(fields.email.input.value);
+      const subject = oneLine(fields.subject.input.value);
       const message = fields.message.input.value.trim();
 
       submitBtn.disabled = true;
@@ -1085,10 +1239,17 @@
       const waText = `*${subject}*\nName: ${name}\nEmail: ${email}\n\n${message}`;
       const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
 
-      window.open(waLink, '_blank', 'noopener');
-
-      showFeedback('success', `WhatsApp should be opening now in a new tab — if it didn't, message us directly at wa.me/${WHATSAPP_NUMBER}.`);
-      form.reset();
+      // No "noopener" feature: it makes window.open() always return null, so a blocked pop-up
+      // could not be detected. The opener link is severed manually instead.
+      const win = window.open(waLink, '_blank');
+      if (win) {
+        win.opener = null;
+        showFeedback('success', 'WhatsApp is opening in a new tab. Nothing is sent until you press Send there.', waLink);
+        form.reset();
+      } else {
+        // Pop-up blocked: keep what the visitor typed and offer a direct link instead.
+        showFeedback('error', 'Your browser blocked the new tab. Your message is still here —', waLink);
+      }
 
       setTimeout(() => {
         submitBtn.disabled = false;
